@@ -1,14 +1,20 @@
 
 import React from 'react';
-import {View, Text, Button, StyleSheet, Pressable} from 'react-native';
+import {View, Text, Button, StyleSheet, Pressable, Image} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+// import { BlurView } from "@react-native-community/blur";
+import logo from '../../assets/logo.png'
+import blur from '../../assets/blur.png'
 
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <SafeAreaView style={loginStyles.container}>
-      <View
-      style={loginStyles.preeshBackrgound}></View>
+      <Image source={blur} style={loginStyles.blur}/>
+      <Image source={logo} style={loginStyles.logo}/>
       <Pressable
+      onPress={() =>
+        navigation.navigate('TabNavigator', {})
+      }
       style={loginStyles.signIn}>
         <Text style={loginStyles.signInText}>Sign In</Text>
       </Pressable>
@@ -24,14 +30,6 @@ const loginStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-  },
-  preeshBackrgound: {
-    backgroundColor: rgba=(240, 240, 240, 0.95),
-    position: 'absolute',
-    width: 344,
-    height: 120, 
-    left: 22,
-    top: 217,
   },
   signIn: {
     backgroundColor: '#10451D',
@@ -73,6 +71,20 @@ const loginStyles = StyleSheet.create({
     letterSpacing: 0.25,
     color: '#2D2F2D',
   },
+  logo: {
+    width: 310.97,
+    height: 97,
+    position: 'absolute',
+    left: 39.51,
+    top: 222,
+  },
+  blur: {
+    position: 'absolute',
+    width: 344,
+    height: 120, 
+    left: 22,
+    top: 217,
+  }
 });
 
 export default Login;

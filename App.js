@@ -68,29 +68,41 @@ const TabNavigator = () => {
   );
 };
 
+let isSignedIn = false //CHANGE to using backend check
+
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{headerShown: false, cardStyle:{backgroundColor:'#B7EFC5'}}}
-          />
+      {isSignedIn ? (
+          <>
           <Stack.Screen
             name="TabNavigator"
             component={TabNavigator}
             options={{headerShown: false}}
           />
+          </>
+        ) : (
+          <>
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{headerShown: false, cardStyle:{backgroundColor:'#B7EFC5'}}}
+          />
+            <Stack.Screen
+            name="TabNavigator"
+            component={TabNavigator}
+            options={{headerShown: false}}
+          />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
-
 const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: '#fff',
-    // borderRadius: 20
   },
 });
 
