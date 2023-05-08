@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View} from 'react-native';
 import Login from './app/screens/Login'
 import Home from './app/screens/Home'
 import Browse from './app/screens/Browse'
@@ -19,6 +19,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
+    
     <Tab.Navigator
     tabBarOptions={{
       style: styles.tabBar,
@@ -87,7 +88,7 @@ const App = () => {
           <Stack.Screen
             name="Login"
             component={Login}
-            options={{headerShown: false, cardStyle:{backgroundColor:'#B7EFC5'}}}
+            options={{headerShown: false}}
           />
             <Stack.Screen
             name="TabNavigator"
@@ -104,6 +105,13 @@ const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: '#fff',
   },
+  logo: {
+    width: 109,
+    height: 34,
+    position: 'absolute',
+    left: 40,
+    top: 46,
+  }
 });
 
 export default App;

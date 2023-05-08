@@ -2,14 +2,15 @@
 import React from 'react';
 import {View, Text, Button, StyleSheet, Pressable, Image} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-// import { BlurView } from "@react-native-community/blur";
 import logo from '../../assets/logo.png'
 import blur from '../../assets/blur.png'
+
+
 
 const Login = ({navigation}) => {
   return (
     <SafeAreaView style={loginStyles.container}>
-      <Image source={blur} style={loginStyles.blur}/>
+      {/* <Image source={blur} style={loginStyles.blur}/> */}
       <Image source={logo} style={loginStyles.logo}/>
       <Pressable
       onPress={() =>
