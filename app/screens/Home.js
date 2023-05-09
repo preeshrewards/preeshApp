@@ -11,11 +11,19 @@ import rewardExamples from '../../assets/rewardExamples.png'
 import giftCard from '../../assets/giftCard.png'
 import { useFonts } from 'expo-font';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 MaterialIcons.loadFont();
+FontAwesome.loadFont();
 
 let status = "Bronze"
 let user = "Noah Nefsky"
+let pointsTotal = 200
+let arrowHeight = 88
+let arrowLeft = 169
+let loyaltyColor = '#cd7f32'
+if (status === "Silver") loyaltyColor = '#808080'
+else if (status === "Gold") loyaltyColor = '#d4af37'
 
 
 const Home = () => {
@@ -66,7 +74,6 @@ const opacityStyle = { opacity: opacityAnimation };
     setUpOrdown(!(upOrdown));
     setShouldShow(!shouldShow);
     toggleImage()
-    // LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
   }
   
 
@@ -76,14 +83,11 @@ const opacityStyle = { opacity: opacityAnimation };
       <Text style={homeStyles.welcome}>Welcome Gina👋</Text>
       <View style={homeStyles.barContainer}>
         <View style={homeStyles.howItWorks}>
-        {/* {upOrdown ? ( */}
           <TouchableOpacity 
           onPress={() =>
             console.log("Pressed i")
           }
           ><Text style={homeStyles.text}>ⓘ</Text></TouchableOpacity> 
-          {/* // : null} */}
-          {/* {upOrdown ? ( */}
           <Text style={homeStyles.text}>How It Works</Text>
         </View>
         <Pressable 
@@ -95,9 +99,17 @@ const opacityStyle = { opacity: opacityAnimation };
           : (<MaterialIcons style={{top: 0, position:'absolute', left: 110}} name="keyboard-arrow-up" size={19.88} color={'black'}/>)}
             </Pressable>
         <Image source={meter} style={homeStyles.meter}/>
+        <Text style={[homeStyles.pointMarkText, {left: 52, top: 163}]}>0</Text>
+        <Text style={[homeStyles.pointMarkText, {left: 75, top: 79}]}>100</Text>
+        <Text style={[homeStyles.pointMarkText, {alignSelf: 'center', top: 44}]}>200</Text>
+        <Text style={[homeStyles.pointMarkText, {left: 257, top: 79}]}>300</Text>
+        <Text style={[homeStyles.pointMarkText, {left: 293.5, top: 163}]}>400</Text>
+        <FontAwesome style={{top: arrowHeight, position:'absolute', left: arrowLeft}} name="caret-down" size={25} color={'black'}/>
         <Image source={coin} style={homeStyles.coin}/>
         <Text style={homeStyles.loyaltyStatus}>Loyalty Status:
-        <Text style={{color: '#cd7f32', fontWeight:600}}> {status}</Text></Text>
+        <Text style={{color: loyaltyColor, fontWeight:600}}> {status}</Text></Text>
+        <Text style={homeStyles.pointsTotal}>{pointsTotal}</Text>
+        <Text style={homeStyles.preeshPoints}>Preesh Points</Text>
       </View>
 
       <Animated.View style={!upOrdown ? ({...homeStyles.tabContainer, ...homeStyles.blur, opacityAnimation}) : homeStyles.tabContainer}>
@@ -122,9 +134,9 @@ const opacityStyle = { opacity: opacityAnimation };
 
       <Animated.View style={!upOrdown ? ({...homeStyles.cardContainer, ...homeStyles.blur, opacityAnimation}) : homeStyles.cardContainer}>
       <Image source={giftCard} style={homeStyles.card}/>
-      <Text style={homeStyles.cardUser}><MaterialIcons name="card-membership"  /> {user}</Text>
-      <Text style={homeStyles.cardText}>Exchange your Preesh Points for gift cards reedemable at any of our
-      Preesh partners.
+      <Text style={homeStyles.cardUser}> {user}                         XXXX</Text>
+      <Text style={homeStyles.cardText}>Exchange your Preesh Points for gift cards you can redeem
+      at any of our Preesh partners.
       </Text>
       <Pressable
       onPress={() =>
@@ -147,7 +159,7 @@ const opacityStyle = { opacity: opacityAnimation };
 const homeStyles = StyleSheet.create({
   blur: {
     opacity: 0.2
-  },
+  }, 
   logo: {
     width: 109,
     height: 34,
@@ -202,16 +214,16 @@ const homeStyles = StyleSheet.create({
     position: 'absolute',
   },
   coin: {
-    height: 16.5,
-    width: 11,
+    height: 19,
+    width: 12,
     left: 7,
-    top: 175,
+    top: 170,
   },
   loyaltyStatus: {
     left: 25,
-    top: 157.865,
+    top: 153.5,
     fontWeight: 400,
-    fontSize: 13,
+    fontSize: 13.5,
     lineHeight: 15.23,
   },
   rewardExamples: {
@@ -225,6 +237,31 @@ const homeStyles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 24,
     fontWeight: 400,
+  },
+  pointMarkText: {
+    fontSize: 10,
+    fontWeight: 700,
+    lineHeight: 11.72,
+    position: 'absolute',
+    color: '#10451D',
+  },
+  pointsTotal: {
+    fontSize: 34,
+    fontWeight: 400,
+    lineHeight: 39.84,
+    position: 'absolute',
+    top: 120,
+    alignSelf: 'center',
+    color: '#10451D'
+  },
+  preeshPoints: {
+    fontSize: 10.5,
+    fontWeight: 700,
+    lineHeight: 11.72,
+    top: 160,
+    position: 'absolute',
+    alignSelf: 'center',
+    color: '#10451D'
   },
   tab1: {
     height: 67.91999816894531,
@@ -282,8 +319,8 @@ const homeStyles = StyleSheet.create({
     borderRadius: 10
   },
   cardUser: {
-    fontWeight: 700,
-    fontSize: 7,
+    fontWeight: 600,
+    fontSize: 7.5,
     color: 'white',
     top: -15,
     left: 110
@@ -292,11 +329,11 @@ const homeStyles = StyleSheet.create({
     height: 47,
     width: 343,
     fontWeight: 400,
-    fontSize: 13,
+    fontSize: 13.5,
     position: 'absolute',
     top: 127.865,
     lineHeight: 15.23,
-    left: 8.75
+    left: 15,
   },
   buyGift: {
     // backgroundColor: '#155D27',

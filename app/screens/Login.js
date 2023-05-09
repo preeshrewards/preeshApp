@@ -57,6 +57,8 @@ const loginStyles = StyleSheet.create({
     position: 'absolute',
     left: 24,
     top: 429,
+    borderWidth: 1,
+    borderColor:'#2D2F2D'
   },
   signInText: {
     fontSize: 16,
