@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View} from 'react-native';
 import Login from './app/screens/Login'
-import Home from './app/screens/Home'
+import HomeNav from './app/screens/HomeFlow/HomeNav'
 import Browse from './app/screens/Browse'
 import Scan from './app/screens/Scan'
 import Account from './app/screens/Account'
@@ -19,15 +19,14 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    
     <Tab.Navigator
     tabBarOptions={{
       style: styles.tabBar,
       activeTintColor: '#208B3A',
     }}>
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="HomeNav"
+        component={HomeNav}
         options={{
           tabBarIcon: ({color}) => (
             <MaterialIcons name="home" size={32} color={color} />

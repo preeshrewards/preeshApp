@@ -4,19 +4,20 @@ import { useState, useRef, useSharedValue} from 'react';
 import {View, Text, Image, StyleSheet, Pressable, LayoutAnimation, Animated} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import logo from '../../assets/logo.png'
-import meter from '../../assets/meter.png'
-import coin from '../../assets/coin.png'
-import rewardExamples from '../../assets/rewardExamples.png'
-import giftCard from '../../assets/giftCard.png'
+import logo from '../../../assets/logo.png'
+import meter from '../../../assets/meter.png'
+import coin from '../../../assets/coin.png'
+import rewardExamples from '../../../assets/rewardExamples.png'
+import giftCard from '../../../assets/giftCard.png'
 import { useFonts } from 'expo-font';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+
 MaterialIcons.loadFont();
 FontAwesome.loadFont();
 
-let status = "Bronze"
+let status = "Platinum"
 let user = "Noah Nefsky"
 let pointsTotal = 200
 let arrowHeight = 88
@@ -24,9 +25,10 @@ let arrowLeft = 169
 let loyaltyColor = '#cd7f32'
 if (status === "Silver") loyaltyColor = '#808080'
 else if (status === "Gold") loyaltyColor = '#d4af37'
+else if (status === "Platinum") loyaltyColor = '#CBCAC8'
 
 
-const Home = () => {
+const Home = ( {navigation }) => {
   const opacityAnimation = useRef(new Animated.Value(0.2)).current;
 const opacityStyle = { opacity: opacityAnimation };
 
@@ -85,7 +87,7 @@ const opacityStyle = { opacity: opacityAnimation };
         <View style={homeStyles.howItWorks}>
           <TouchableOpacity 
           onPress={() =>
-            console.log("Pressed i")
+            navigation.navigate('HowItWorks', {})
           }
           ><Text style={homeStyles.text}>ⓘ</Text></TouchableOpacity> 
           <Text style={homeStyles.text}>How It Works</Text>
@@ -134,7 +136,7 @@ const opacityStyle = { opacity: opacityAnimation };
 
       <Animated.View style={!upOrdown ? ({...homeStyles.cardContainer, ...homeStyles.blur, opacityAnimation}) : homeStyles.cardContainer}>
       <Image source={giftCard} style={homeStyles.card}/>
-      <Text style={homeStyles.cardUser}> {user}                         XXXX</Text>
+      <Text style={homeStyles.cardUser}>{user}</Text>
       <Text style={homeStyles.cardText}>Exchange your Preesh Points for gift cards you can redeem
       at any of our Preesh partners.
       </Text>
