@@ -117,7 +117,7 @@ const opacityStyle = { opacity: opacityAnimation };
       <Animated.View style={!upOrdown ? ({...homeStyles.tabContainer, ...homeStyles.blur, opacityAnimation}) : homeStyles.tabContainer}>
         <TouchableOpacity 
         onPress={() =>
-          console.log("Pressed Your Favorites")
+          navigation.navigate('MostPopular', {})
         }
         style={homeStyles.tab1}>
           <Text style={homeStyles.tabLabel}>Most{'\n'}Popular</Text>
@@ -125,7 +125,7 @@ const opacityStyle = { opacity: opacityAnimation };
         </TouchableOpacity>
         <TouchableOpacity 
         onPress={() =>
-          console.log("Pressed Saved Deals")
+          navigation.navigate('SavedDeals', {})
         }
         style={homeStyles.tab2}>
         <Text style={homeStyles.tabLabel}>Saved{'\n'}Deals</Text>

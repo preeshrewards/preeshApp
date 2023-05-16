@@ -4,7 +4,7 @@ import Login from './app/screens/Login'
 import HomeNav from './app/screens/HomeFlow/HomeNav'
 import Browse from './app/screens/Browse'
 import Scan from './app/screens/Scan'
-import Account from './app/screens/Account'
+import ProfileNav from './app/screens/ProfileFlow/ProfileNav'
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -25,7 +25,7 @@ const TabNavigator = () => {
       activeTintColor: '#208B3A',
     }}>
       <Tab.Screen
-        name="HomeNav"
+        name="Home"
         component={HomeNav}
         options={{
           tabBarIcon: ({color}) => (
@@ -55,8 +55,8 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Account"
-        component={Account}
+        name="Profile"
+        component={ProfileNav}
         options={{
           tabBarIcon: ({color}) => (
             <MaterialIcons name="person" size={32} color={color} />

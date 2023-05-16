@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-const Account = () => {
+const MostPopular = () => {
   return (
     <View>
-      <Text>Account</Text>
+      <Text>MostPopular</Text>
     </View>
   );
 };
 
-export default Account;
+export default MostPopular;
