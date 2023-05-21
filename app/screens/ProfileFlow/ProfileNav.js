@@ -2,6 +2,9 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import Profile from './Profile'
 import EditAccount from './EditAccount'
+import About from './About'
+import Promotions from './Promotions'
+import Invite from './Invite'
 import SavedDeals from '../SavedDeals'
 import MostPopular from '../MostPopular'
 import {createStackNavigator} from '@react-navigation/stack';
@@ -29,6 +32,21 @@ const MainProfile = () => {
           <Stack.Screen
               name="MostPopular"
               component={MostPopular}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="About"
+              component={About}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="Invite"
+              component={Invite}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="Promotions"
+              component={Promotions}
               options={{headerShown: false}}
           />
         </Stack.Navigator>

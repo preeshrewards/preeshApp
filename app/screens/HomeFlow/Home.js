@@ -78,7 +78,6 @@ const opacityStyle = { opacity: opacityAnimation };
     toggleImage()
   }
   
-
   return (
     <SafeAreaView>
       <Image source={logo} style={homeStyles.logo}/>

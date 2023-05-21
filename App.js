@@ -33,6 +33,12 @@ const TabNavigator = () => {
           ),
           headerShown: false,
         }}
+        listeners={({ navigation }) => ({
+          tabPress: e => {
+            e.preventDefault();
+            navigation.navigate('Home', { screen: 'HomeMain' });
+          },
+        })}
       />
       <Tab.Screen
         name="Browse"
@@ -63,12 +69,18 @@ const TabNavigator = () => {
           ),
           headerShown: false,
         }}
+          listeners={({ navigation }) => ({
+          tabPress: e => {
+            e.preventDefault();
+            navigation.navigate('Profile', { screen: 'Profile' });
+          },
+        })}
       />
     </Tab.Navigator>
   );
 };
 
-let isSignedIn = false //CHANGE to using backend check
+let isSignedIn = true //CHANGE to using backend check
 
 const App = () => {
   return (

@@ -46,15 +46,27 @@ const Profile = ( {navigation} ) => {
             </TouchableOpacity>
         </View>
         <View style={profileStyles.container2}>
-            <Text style={profileStyles.field}>History</Text>
-            <Text style={profileStyles.field}>Promotions</Text>
-            <Text style={profileStyles.field}>Link Cards</Text>
-            <Text style={profileStyles.field}>Invite a Friend</Text>
-            <Text style={profileStyles.field}>About Preesh</Text>
+            <TouchableOpacity><Text style={profileStyles.field}>History</Text></TouchableOpacity>
+            <TouchableOpacity
+            onPress={() =>
+                navigation.navigate('Promotions', {})
+            }><Text style={profileStyles.field}>Promotions</Text></TouchableOpacity>
+            <TouchableOpacity><Text style={profileStyles.field}>Notifications</Text></TouchableOpacity>
+            <TouchableOpacity
+            onPress={() =>
+                navigation.navigate('Invite', {})
+            }>
+                <Text style={profileStyles.field}>Invite a Friend</Text></TouchableOpacity>
+            <TouchableOpacity 
+                onPress={() =>
+                    navigation.navigate('About', {})
+                }>
+                <Text style={profileStyles.field}>About Preesh</Text>
+            </TouchableOpacity>
             <View style={profileStyles.iconContainer}>
                 <MaterialIcons style={profileStyles.bottomIcons} name="history" size={24} color={'#10451D'} />
                 <Entypo style={profileStyles.bottomIcons} name="price-tag" size={24} color={'#10451D'} />
-                <MaterialCommunityIcons style={profileStyles.bottomIcons} name="credit-card-plus" size={24} color={'#10451D'} />
+                <MaterialIcons style={profileStyles.bottomIcons} name="notifications" size={24} color={'#10451D'} />
                 <AntDesign style={profileStyles.bottomIcons} name="addusergroup" size={24} color={'#10451D'} />
                 <MaterialIcons style={profileStyles.bottomIcons} name="info" size={24} color={'#10451D'} />
             </View>
