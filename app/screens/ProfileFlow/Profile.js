@@ -51,7 +51,11 @@ const Profile = ( {navigation} ) => {
             onPress={() =>
                 navigation.navigate('Promotions', {})
             }><Text style={profileStyles.field}>Promotions</Text></TouchableOpacity>
-            <TouchableOpacity><Text style={profileStyles.field}>Notifications</Text></TouchableOpacity>
+            <TouchableOpacity
+            onPress={() =>
+                navigation.navigate('BuyGift', {})
+            }
+            ><Text style={profileStyles.field}>Buy a Gift</Text></TouchableOpacity>
             <TouchableOpacity
             onPress={() =>
                 navigation.navigate('Invite', {})
@@ -66,7 +70,7 @@ const Profile = ( {navigation} ) => {
             <View style={profileStyles.iconContainer}>
                 <MaterialIcons style={profileStyles.bottomIcons} name="history" size={24} color={'#10451D'} />
                 <Entypo style={profileStyles.bottomIcons} name="price-tag" size={24} color={'#10451D'} />
-                <MaterialIcons style={profileStyles.bottomIcons} name="notifications" size={24} color={'#10451D'} />
+                <MaterialIcons style={profileStyles.bottomIcons} name="card-giftcard" size={24} color={'#10451D'} />
                 <AntDesign style={profileStyles.bottomIcons} name="addusergroup" size={24} color={'#10451D'} />
                 <MaterialIcons style={profileStyles.bottomIcons} name="info" size={24} color={'#10451D'} />
             </View>

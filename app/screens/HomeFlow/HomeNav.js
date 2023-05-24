@@ -6,6 +6,7 @@ import HomeMain from './Home'
 import HowItWorks from './HowItWorks'
 import SavedDeals from '../SavedDeals'
 import MostPopular from '../MostPopular'
+import BuyGift from '../BuyGift'
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -33,6 +34,11 @@ const HomeNav = () => {
           <Stack.Screen
               name="MostPopular"
               component={MostPopular}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="BuyGift"
+              component={BuyGift}
               options={{headerShown: false}}
           />
       </Stack.Navigator>

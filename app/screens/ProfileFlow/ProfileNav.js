@@ -3,10 +3,12 @@ import {View, Text} from 'react-native';
 import Profile from './Profile'
 import EditAccount from './EditAccount'
 import About from './About'
+import History from './History'
 import Promotions from './Promotions'
 import Invite from './Invite'
 import SavedDeals from '../SavedDeals'
 import MostPopular from '../MostPopular'
+import BuyGift from '../BuyGift'
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -47,6 +49,21 @@ const MainProfile = () => {
           <Stack.Screen
               name="Promotions"
               component={Promotions}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="History"
+              component={History}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="Notifications"
+              component={History}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="BuyGift"
+              component={BuyGift}
               options={{headerShown: false}}
           />
         </Stack.Navigator>

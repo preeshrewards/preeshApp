@@ -5,3 +5,4 @@ class Model {
       this.user = user;
     }
 }
+

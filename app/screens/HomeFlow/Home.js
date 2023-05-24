@@ -141,7 +141,8 @@ const opacityStyle = { opacity: opacityAnimation };
       </Text>
       <Pressable
       onPress={() =>
-        console.log("Pressed Buy a Gift")}
+        navigation.navigate('BuyGift', {})
+    }
       style={({pressed}) => [
         {
           backgroundColor: pressed ? '#208B3A' : '#155D27',

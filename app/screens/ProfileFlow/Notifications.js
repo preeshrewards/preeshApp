@@ -5,7 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 AntDesign.loadFont();
 
-const About = ( {navigation} ) => {
+const Notifications = ( {navigation} ) => {
   return (
     <SafeAreaView>
         <Text style={aboutStyles.title}>About Preesh</Text>
@@ -59,4 +59,4 @@ const aboutStyles = StyleSheet.create({
     }
 });
 
-export default Notification;
+export default Notifications;
