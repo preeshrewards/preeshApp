@@ -47,7 +47,9 @@ const History = ( {navigation} ) => {
         
         {rewards.length ?
         (
-        <ScrollView style={{top: 80}}>
+        <ScrollView 
+        showsVerticalScrollIndicator={false}
+        style={{top: 80}}>
         {rewards.map((reward) => {
         
          return (

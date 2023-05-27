@@ -17,11 +17,61 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 MaterialIcons.loadFont();
 FontAwesome.loadFont();
 
+// at 100 deg=-45, height = 108, left = 120
+// at 200 deg=0, height =88, left = 169
+// at 300 deg=45, height =88, left = 218
 let status = "Platinum"
 let user = "Noah Nefsky"
-let pointsTotal = 200
-let arrowHeight = 88
-let arrowLeft = 169
+let pointsTotal = 200.0
+let arrowHeight = 88.0
+let angle = 0.0
+let arrowLeft = 169.0
+// Set the ticker
+// This was meh, redo at some point and meter (don't use image)
+if (pointsTotal < 200 && pointsTotal >= 100) {
+  angle = -0.45 * Math.abs(pointsTotal-200)
+  arrowHeight = 88+20/100 * Math.abs(pointsTotal-200)
+  arrowLeft = 169-49/100 * Math.abs(pointsTotal-200)
+} else if (pointsTotal > 200 && pointsTotal <= 300) {
+  angle = 0.45 * Math.abs(pointsTotal-200)
+  arrowHeight = 88+20/100 * Math.abs(pointsTotal-200)
+  arrowLeft = 169+49/100 * Math.abs(pointsTotal-200)
+} else if (pointsTotal <= 50) {
+  // at 0: height = 157, angle = -90, left = 99
+  // 60 =2, 70=3, 80 = 5, 90=8
+  angle = -90 + 0.45 * pointsTotal
+  arrowHeight = 157 - 49/100 * pointsTotal
+  arrowLeft = 99 + 4.5/50 * pointsTotal
+} else if (pointsTotal > 50 && pointsTotal < 100) {
+  let adder = 0;
+  if (pointsTotal < 60) {
+    adder = 2/60*pointsTotal;
+  } else if (pointsTotal <= 70) {
+    adder = 2 + 1/70*pointsTotal;
+  } else if (pointsTotal <= 80) {
+    adder = 3 + 2/80*pointsTotal;
+  } else if (pointsTotal <= 85) {
+    adder = 5 + 3/90*pointsTotal-1
+  } else if (pointsTotal <= 99) {
+    adder = 8
+  }
+  angle = -90 + 0.45 * pointsTotal
+  arrowHeight = 157 - 49/100 * pointsTotal
+  if (pointsTotal > 90) arrowHeight = 157 - 49/100 * 90
+  arrowLeft = 99 + 4.5/50 * pointsTotal + adder
+} else if (pointsTotal <= 399 && pointsTotal > 300) {
+  // at 0: height = 157, angle = -90, left = 99
+  // 60 =2, 70=3, 80 = 5, 90=8
+  angle = 90 - 0.45 * Math.abs(pointsTotal-400)
+  arrowHeight = 157 - 49/100 * Math.abs(pointsTotal-400)
+  arrowLeft = 238 - 20/100 * Math.abs(pointsTotal-400)
+  if (pointsTotal <= 370) arrowLeft = 241 - 20/100 * Math.abs(pointsTotal-400)
+  if (pointsTotal <= 310) arrowLeft -=1
+} else if (pointsTotal == 400) {
+  angle = 90
+  arrowHeight = 157
+  arrowLeft = 238
+}
 let loyaltyColor = '#cd7f32'
 if (status === "Silver") loyaltyColor = '#808080'
 else if (status === "Gold") loyaltyColor = '#d4af37'
@@ -105,7 +155,9 @@ const opacityStyle = { opacity: opacityAnimation };
         <Text style={[homeStyles.pointMarkText, {alignSelf: 'center', top: 44}]}>200</Text>
         <Text style={[homeStyles.pointMarkText, {left: 257, top: 79}]}>300</Text>
         <Text style={[homeStyles.pointMarkText, {left: 293.5, top: 163}]}>400</Text>
-        <FontAwesome style={{top: arrowHeight, position:'absolute', left: arrowLeft}} name="caret-down" size={25} color={'black'}/>
+        <FontAwesome style={{top: arrowHeight, position:'absolute', left: arrowLeft,
+        transform: [{ rotate: `${angle}deg` }],}}
+         name="caret-down" size={25} color={'black'}/>
         <Image source={coin} style={homeStyles.coin}/>
         <Text style={homeStyles.loyaltyStatus}>Loyalty Status:
         <Text style={{color: loyaltyColor, fontWeight:600}}> {status}</Text></Text>

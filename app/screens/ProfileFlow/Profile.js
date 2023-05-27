@@ -46,7 +46,11 @@ const Profile = ( {navigation} ) => {
             </TouchableOpacity>
         </View>
         <View style={profileStyles.container2}>
-            <TouchableOpacity><Text style={profileStyles.field}>History</Text></TouchableOpacity>
+            <TouchableOpacity
+            onPress={() =>
+                navigation.navigate('History', {})
+            }
+            ><Text style={profileStyles.field}>History</Text></TouchableOpacity>
             <TouchableOpacity
             onPress={() =>
                 navigation.navigate('Promotions', {})
