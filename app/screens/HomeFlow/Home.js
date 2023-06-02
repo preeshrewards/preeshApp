@@ -370,7 +370,7 @@ const homeStyles = StyleSheet.create({
     width: 165.59,
     left: 93.205,
     top: 11.54,
-    borderRadius: 10
+    borderRadius: 16
   },
   cardUser: {
     fontWeight: 600,
