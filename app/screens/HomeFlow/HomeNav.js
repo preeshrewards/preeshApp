@@ -7,6 +7,7 @@ import HowItWorks from './HowItWorks'
 import SavedDeals from '../SavedDeals'
 import MostPopular from '../MostPopular'
 import BuyGift from '../BuyGift'
+import Checkout from '../Checkout'
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -39,6 +40,11 @@ const HomeNav = () => {
           <Stack.Screen
               name="BuyGift"
               component={BuyGift}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="Checkout"
+              component={Checkout}
               options={{headerShown: false}}
           />
       </Stack.Navigator>

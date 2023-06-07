@@ -4,11 +4,13 @@ import Profile from './Profile'
 import EditAccount from './EditAccount'
 import About from './About'
 import History from './History'
+import GiftCards from './GiftCards'
 import Promotions from './Promotions'
 import Invite from './Invite'
 import SavedDeals from '../SavedDeals'
 import MostPopular from '../MostPopular'
 import BuyGift from '../BuyGift'
+import Checkout from '../Checkout'
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -64,6 +66,16 @@ const MainProfile = () => {
           <Stack.Screen
               name="BuyGift"
               component={BuyGift}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="Checkout"
+              component={Checkout}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="GiftCards"
+              component={GiftCards}
               options={{headerShown: false}}
           />
         </Stack.Navigator>
