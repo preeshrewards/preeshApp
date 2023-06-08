@@ -67,7 +67,9 @@ export default function App( {navigation} ) {
           title="Pay Now"
           style={styles.button}
           textStyle={styles.buttonText}
-          onPress={() => console.log("merchant action")}
+          onPress={() =>
+            navigation.navigate('Processed', {})
+          }
         />
       </Frames>
     </View>

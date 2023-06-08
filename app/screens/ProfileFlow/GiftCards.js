@@ -41,7 +41,7 @@ const History = ( {navigation} ) => {
         <Text style={historyStyles.title}>Past Rewards Used</Text>
         <AntDesign style={historyStyles.backArrow} name="arrowleft" size={24} color={'black'}
                 onPress={() =>
-                    navigation.navigate('Profile', {})
+                    navigation.goBack(null)
                   }
         />
         
