@@ -11,7 +11,7 @@ AntDesign.loadFont();
 MaterialCommunityIcons.loadFont();
 
 let pointsTotal = 200.0
-let currentBalance = '0'
+let currentBalance = '0.00'
 // need to add proper algorithm for calcuting pressh points
 
 const BuyGift = ( {navigation} ) => {
@@ -56,9 +56,7 @@ const BuyGift = ( {navigation} ) => {
   return (
     <SafeAreaView>
       <Text style={buyGiftStyle.title}>Buy a Gift<Text> </Text>
-      <MaterialCommunityIcons name="gift" size={24} color={isSelected ? 'white' : 'black'}
-
-                />
+      <MaterialCommunityIcons name="gift" size={24} color={'black'}/>
       </Text>
       <AntDesign style={buyGiftStyle.backArrow} name="arrowleft" size={24} color={'black'}
                 onPress={() =>
@@ -97,12 +95,11 @@ const BuyGift = ( {navigation} ) => {
             <Text style={{fontSize: 22, color: '#F4F2EC'}}> + $5</Text>
           </TouchableOpacity>
         </View>
-        <Button title='Reset' color={'#2DC653'}></Button>
         <View style={[buyGiftStyle.text, {flexDirection: 'row', alignItems: 'center'}]}>
           <Text style={{fontSize: 22, fontWeight: 400}}>Cost</Text>
           <Text style={{fontSize: 22, fontWeight: 400}}>: </Text>
           <Image source={coin} style={buyGiftStyle.coin}/>
-          <Text style={{color: '#208B3A', fontSize: 22, fontWeight: 500}}> {inputValue *5} </Text>
+          <Text style={[{fontSize: 22, fontWeight: 500}, { color: isRed }]}> {inputValue *5} </Text>
         </View>
       </View>
       <View style={buyGiftStyle.select}>
@@ -136,7 +133,7 @@ const buyGiftStyle = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: 'grey',
     backgroundColor: '#208B3A',
-    top: 400,
+    top: 350,
     alignSelf: 'center',
     alignItems: 'center',
     elevation: 5,

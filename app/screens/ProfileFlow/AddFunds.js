@@ -15,7 +15,7 @@ let currentBalance = '20.0'
 // need to add proper algorithm for calcuting pressh points
 
 const GiftCard = ( {navigation} ) => {
-  const [inputValue, setInputValue] = useState(currentBalance);
+  const [inputValue, setInputValue] = useState(0);
   const [isSelected, setSelection] = useState(false);
   const [isShow, setShow] = useState('none');
   const [isRed, setRed] = useState('#2DC653');
@@ -72,7 +72,10 @@ const GiftCard = ( {navigation} ) => {
         <Text style={[buyGiftStyle.notEnough, {display: isShow}]}>Not enough Preesh Points</Text>
         <View style={[buyGiftStyle.text, {flexDirection: 'row', alignItems: 'center'}]}>
           <Text style={{fontSize: 22, fontWeight: 400}}>Card Balance: $</Text>
-          {/* <Image source={coin} style={buyGiftStyle.coin}/> */}
+          <Text style={{fontSize: 22, fontWeight: 500, color: '#208B3A'}}>{currentBalance}</Text>
+        </View>
+        <View style={[buyGiftStyle.text, {flexDirection: 'row', alignItems: 'center'}]}>
+          <Text style={{fontSize: 22, fontWeight: 400}}>Added Funds: $</Text>
           <Text style={{fontSize: 22, fontWeight: 500, color: '#208B3A'}}>{inputValue}</Text>
         </View>
         <View style={{flexDirection: 'row', alignSelf: 'center'}}>
@@ -93,12 +96,11 @@ const GiftCard = ( {navigation} ) => {
             <Text style={{fontSize: 22, color: '#F4F2EC'}}> + $5</Text>
           </TouchableOpacity>
         </View>
-        <Button title='Reset' color={'#2DC653'}></Button>
         <View style={[buyGiftStyle.text, {flexDirection: 'row', alignItems: 'center'}]}>
           <Text style={{fontSize: 22, fontWeight: 400}}>Cost</Text>
           <Text style={{fontSize: 22, fontWeight: 400}}>: </Text>
           <Image source={coin} style={buyGiftStyle.coin}/>
-          <Text style={{color: '#208B3A', fontSize: 22, fontWeight: 500}}> {inputValue *5} </Text>
+          <Text style={[{fontSize: 22, fontWeight: 500}, { color: isRed }]}> {inputValue *5} </Text>
         </View>
       </View>
       <View style={buyGiftStyle.select}>
@@ -132,7 +134,7 @@ const buyGiftStyle = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: 'grey',
     backgroundColor: '#208B3A',
-    top: 400,
+    top: 420,
     alignSelf: 'center',
     alignItems: 'center',
     elevation: 5,

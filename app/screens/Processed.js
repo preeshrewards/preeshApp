@@ -8,10 +8,10 @@ MaterialCommunityIcons.loadFont();
 AntDesign.loadFont();
 
 let user = "Noah Nefsky"
-let userMessage = "Happy Birthday! I hope you have an amazing day and put this to good use:)"
+// let userMessage = "Happy Birthday! I hope you have an amazing day and put this to good use:)"
 let code = "6132 7279 5118 3797";
-let subject = `You have received a gift from ${user}`
-let emailMessage = `${userMessage}\nTo use this giftcard, go to gift cards in your` + `profile section and click redeem. Then just enter your code:\n${code}`
+let subject = `You have received a gift from ${user}!`
+let emailMessage = `To use this giftcard, go to gift cards in your` + `profile section and click redeem. Then just enter your code:\n${code}`
 
 const Processed = ( {route, navigation} ) => {
     const gift = route.params;
@@ -67,26 +67,31 @@ const Processed = ( {route, navigation} ) => {
                             </View>
                         </View>
                     </TouchableOpacity>
-                    <View style={{flexDirection: 'row', flex: 1}}>
-                        <View style={{borderBottomWidth: 1, borderTopWidth: 1, alignItems: 'center', borderRightWidth: 1,
-                            borderColor: '#A39E9E', top: 175, width: '50%', height: 85, justifyContent: 'center'}}>
-                            <MaterialCommunityIcons name="email" size={35} color={'#208B3A'}
-                            onPress={() =>
-                                Linking.openURL(`mailto:?subject=${subject}&body=${emailMessage}`)
-                            }
-                            />
-                            <Text style={{paddingTop: 5}}>Email</Text>
-                        </View>
-                        <View style={{borderBottomWidth: 1, borderTopWidth: 1, alignItems: 'center',
-                                borderColor: '#A39E9E', top: 175, width: '50%', height: 85, justifyContent: 'center'}}>
-                            <AntDesign name="message1" size={35} color={'#208B3A'}
-                            onPress={() =>
-                                Linking.openURL(`sms:${getSMSDivider()}body=${emailMessage}`)
-                            }
-                            />
-                            <Text style={{paddingTop: 5}}>Text</Text>
-                        </View>
-                    </View>
+                    <View style={{ flexDirection: 'row', flex: 1 }}>
+  <View style={{ borderBottomWidth: 1, borderTopWidth: 1, alignItems: 'center', borderRightWidth: 1, borderColor: '#A39E9E', top: 175, width: '50%', height: 85, justifyContent: 'center' }}>
+    <MaterialCommunityIcons
+      name="email"
+      size={35}
+      color={'#208B3A'}
+      onPress={() =>
+        Linking.openURL(`mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailMessage)}`)
+      }
+    />
+    <Text style={{ paddingTop: 5 }}>Email</Text>
+  </View>
+  <View style={{ borderBottomWidth: 1, borderTopWidth: 1, alignItems: 'center', borderColor: '#A39E9E', top: 175, width: '50%', height: 85, justifyContent: 'center' }}>
+    <AntDesign
+      name="message1"
+      size={35}
+      color={'#208B3A'}
+      onPress={() =>
+        Linking.openURL(`sms:${getSMSDivider()}body=${encodeURIComponent(subject + "\n" + emailMessage)}`)
+      }
+    />
+    <Text style={{ paddingTop: 5 }}>Text</Text>
+  </View>
+</View>
+
                 </View>
             )
         }          

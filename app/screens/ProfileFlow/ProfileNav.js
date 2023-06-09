@@ -11,8 +11,10 @@ import SavedDeals from '../SavedDeals'
 import AddFunds from './AddFunds'
 import MostPopular from '../MostPopular'
 import BuyGift from '../BuyGift'
+import ScanCard from './ScanCard'
 import Processed from '../Processed'
 import Checkout from '../Checkout'
+import RedeemGift from './RedeemGift'
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -88,6 +90,16 @@ const MainProfile = () => {
           <Stack.Screen
               name="AddFunds"
               component={AddFunds}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="RedeemGift"
+              component={RedeemGift}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="ScanCard"
+              component={ScanCard}
               options={{headerShown: false}}
           />
         </Stack.Navigator>

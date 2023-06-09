@@ -21,16 +21,17 @@ class SavedReward {
   
   // constructor() {}
 };
-const deal = new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell")
+// const deal = new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell")
 const code = "6132 7279 5118 3797"
 
-const Popup = ( ) => {
+const Popup = ( {argument} ) => {
+  const deal = argument
+  console.log(deal)
   return (
-    <SafeAreaView>
     <View style={scanStyles.container}>
       <Image source={logo} style={scanStyles.logo}/>
       <View>
-        <Image source={restaurantImagePlaceholder} style={scanStyles.restaurantImage}/>
+        <Image source={argument.picture} style={scanStyles.restaurantImage}/>
         <View style={{}}>
           <Text></Text>
         </View>
@@ -44,7 +45,6 @@ const Popup = ( ) => {
       <Text style={[scanStyles.code, {top: 435}]}>{code}</Text>
       <Text style={[scanStyles.code, {top: 464}]}>Scan to use rewards</Text>
     </View>
-    </SafeAreaView>
   );
 };
 
