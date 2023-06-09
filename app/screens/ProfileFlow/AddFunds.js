@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, SafeAreaView, Image, StyleSheet, Button, Animated, Easing} from 'react-native';
-import giftCard from '../../assets/giftCard.png'
+import giftCard from '../../../assets/giftCard.png'
 import Checkbox from 'expo-checkbox';
-import coin from '../../assets/coin.png'
+import coin from '../../../assets/coin.png'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
@@ -11,10 +11,10 @@ AntDesign.loadFont();
 MaterialCommunityIcons.loadFont();
 
 let pointsTotal = 200.0
-let currentBalance = '0'
+let currentBalance = '20.0'
 // need to add proper algorithm for calcuting pressh points
 
-const BuyGift = ( {navigation} ) => {
+const GiftCard = ( {navigation} ) => {
   const [inputValue, setInputValue] = useState(currentBalance);
   const [isSelected, setSelection] = useState(false);
   const [isShow, setShow] = useState('none');
@@ -55,11 +55,7 @@ const BuyGift = ( {navigation} ) => {
 
   return (
     <SafeAreaView>
-      <Text style={buyGiftStyle.title}>Buy a Gift<Text> </Text>
-      <MaterialCommunityIcons name="gift" size={24} color={isSelected ? 'white' : 'black'}
-
-                />
-      </Text>
+      <Text style={buyGiftStyle.title}>Add Funds</Text>
       <AntDesign style={buyGiftStyle.backArrow} name="arrowleft" size={24} color={'black'}
                 onPress={() =>
                   navigation.goBack(null)
@@ -108,7 +104,7 @@ const BuyGift = ( {navigation} ) => {
       <View style={buyGiftStyle.select}>
         <TouchableOpacity
         onPress={() =>
-          navigation.navigate('Checkout', true)
+          navigation.navigate('Checkout', false)
         }>
             <Text style={{fontSize: 22, color: 'white', fontWeight: 500}}>Checkout</Text>
         </TouchableOpacity>
@@ -217,4 +213,4 @@ const buyGiftStyle = StyleSheet.create({
   }
 });
 
-export default BuyGift;
+export default GiftCard;

@@ -59,7 +59,7 @@ const Profile = ( {navigation} ) => {
             onPress={() =>
                 navigation.navigate('GiftCards', {})
             }
-            ><Text style={profileStyles.field}>Gift Cards</Text></TouchableOpacity>
+            ><Text style={profileStyles.field}>Preesh Card</Text></TouchableOpacity>
             <TouchableOpacity
             onPress={() =>
                 navigation.navigate('Invite', {})

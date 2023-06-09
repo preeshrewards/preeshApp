@@ -188,7 +188,7 @@ const opacityStyle = { opacity: opacityAnimation };
       <Animated.View style={!upOrdown ? ({...homeStyles.cardContainer, ...homeStyles.blur, opacityAnimation}) : homeStyles.cardContainer}>
       <Image source={giftCard} style={homeStyles.card}/>
       <Text style={homeStyles.cardUser}>{user}</Text>
-      <Text style={homeStyles.cardText}>Exchange your Preesh Points for gift cards you can redeem
+      <Text style={homeStyles.cardText}>Exchange your Preesh Points for gift card money redeemable
       at any of our Preesh partners.
       </Text>
       <Pressable
@@ -402,7 +402,7 @@ const homeStyles = StyleSheet.create({
     paddingHorizontal: 5,
     position: 'absolute',
     left: 265,
-    top: 155,
+    top: 160,
     shadowOpacity: 0.25,
     shadowRadius: 4,
     shadowOffset: { width: 1, height: 1 },

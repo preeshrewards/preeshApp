@@ -8,6 +8,7 @@ import GiftCards from './GiftCards'
 import Promotions from './Promotions'
 import Invite from './Invite'
 import SavedDeals from '../SavedDeals'
+import AddFunds from './AddFunds'
 import MostPopular from '../MostPopular'
 import BuyGift from '../BuyGift'
 import Processed from '../Processed'
@@ -82,6 +83,11 @@ const MainProfile = () => {
           <Stack.Screen
               name="Processed"
               component={Processed}
+              options={{headerShown: false}}
+          />
+          <Stack.Screen
+              name="AddFunds"
+              component={AddFunds}
               options={{headerShown: false}}
           />
         </Stack.Navigator>

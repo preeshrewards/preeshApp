@@ -14,8 +14,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 AntDesign.loadFont();
 MaterialCommunityIcons.loadFont();
 
-export default function App( {navigation} ) {
-    const [isGift, setIsGift] = useState(true);
+export default function App( {route, navigation} ) {
+  const gift = route.params;
+    const [isGift, setIsGift] = useState(gift);
   return (
       <SafeAreaView>
     <Text style={styles.title}>Buy a Gift Card</Text>
@@ -68,7 +69,7 @@ export default function App( {navigation} ) {
           style={styles.button}
           textStyle={styles.buttonText}
           onPress={() =>
-            navigation.navigate('Processed', {})
+            navigation.navigate('Processed', gift)
           }
         />
       </Frames>

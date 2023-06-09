@@ -13,8 +13,10 @@ let code = "6132 7279 5118 3797";
 let subject = `You have received a gift from ${user}`
 let emailMessage = `${userMessage}\nTo use this giftcard, go to gift cards in your` + `profile section and click redeem. Then just enter your code:\n${code}`
 
-const Processed = ( {navigation} ) => {
-    const [isGift] = useState(false);   
+const Processed = ( {route, navigation} ) => {
+    const gift = route.params;
+    console.log(gift)
+    const [isGift] = useState(gift);   
     const [copiedText, setCopiedText] = useState('');
 
     function getSMSDivider() {
@@ -29,7 +31,7 @@ const Processed = ( {navigation} ) => {
         <SafeAreaView>
             <Image source={logo} style={processedStyles.logo}/>
             <Text style={processedStyles.title}>Your payment has been processed!</Text>
-        {isGift ?
+        {!isGift ?
             (
                 <View>
                     <Text style={processedStyles.description}>Please navigate to the gift cards page to see it.
