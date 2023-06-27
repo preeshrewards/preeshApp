@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View} from 'react-native';
 import Login from './app/screens/Login'
 import HomeNav from './app/screens/HomeFlow/HomeNav'
-import Browse from './app/screens/Browse'
+import Browse from './app/screens/BrowseFlow/Browse'
 import Scan from './app/screens/Scan'
 import ProfileNav from './app/screens/ProfileFlow/ProfileNav'
 import Entypo from 'react-native-vector-icons/Entypo';
