@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Rewards from '../../Models/Model';
 
 MaterialCommunityIcons.loadFont();
 MaterialIcons.loadFont();
@@ -15,6 +16,11 @@ let first = "Noah";
 let last = "Nefsky"
 
 const Profile = ( {navigation} ) => {
+    const popularTitle = "Most Popular";
+    const savedTitle = "Saved Deals"
+    const rewards = new Rewards();
+    const rewards1 = rewards.rewards1;
+    const rewards2 = rewards.rewards2;
   return (
     <SafeAreaView>
         <Image source={logo} style={profileStyles.logo}/>
@@ -30,7 +36,7 @@ const Profile = ( {navigation} ) => {
         <View style={profileStyles.tabContainer}>
             <TouchableOpacity 
             onPress={() =>
-                navigation.navigate('MostPopular', {})
+                navigation.navigate('RewardListGeneral', {rewards1, rewards2, popularTitle})
             }
             style={profileStyles.tab1}>
             <Text style={profileStyles.tabLabel}>Most{'\n'}Popular</Text>
@@ -38,7 +44,7 @@ const Profile = ( {navigation} ) => {
             </TouchableOpacity>
             <TouchableOpacity 
             onPress={() =>
-                navigation.navigate('SavedDeals', {})
+                navigation.navigate('RewardListGeneral', {rewards1, rewards2, savedTitle})
             }
             style={profileStyles.tab2}>
             <Text style={profileStyles.tabLabel}>Saved{'\n'}Deals</Text>

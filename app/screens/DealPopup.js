@@ -5,6 +5,7 @@ import logo from '../../assets/logo.png'
 import restaurantImagePlaceholder from '../../assets/restaurantImagePlaceholder.png'
 import { QRCode } from 'react-native-custom-qr-codes-expo';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import coin from '../../assets/coin.png'
 
 class SavedReward {
   points = 0
@@ -32,6 +33,10 @@ const Popup = ( {argument} ) => {
       <Image source={logo} style={scanStyles.logo}/>
       <View>
         <Image source={argument.picture} style={scanStyles.restaurantImage}/>
+        <View style={scanStyles.points}>
+           <Text style={scanStyles.pointsText}>{argument.points} Preesh </Text>
+           <Image source={coin} style={scanStyles.coin}/>
+        </View>
         <View style={{}}>
           <Text></Text>
         </View>
@@ -79,6 +84,24 @@ const scanStyles = StyleSheet.create({
       shadowOffset: {width: -2, height: 4},
       shadowOpacity: 0.2,
       shadowRadius: 3,
+    },
+    points: {
+      flexDirection: 'row',
+      position: 'absolute',
+      top: 150,
+      backgroundColor: '#B7EFC5',
+      padding: 5,
+      borderRadius: 10,
+      left: 5
+    },
+    pointsText: {
+      fontWeight: 700,
+      fontSize: 14,
+      color: '#208B3A'
+    },
+    coin: {
+      height: 19,
+      width: 12,
     }
 });
 

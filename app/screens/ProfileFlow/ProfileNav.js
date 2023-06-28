@@ -7,14 +7,13 @@ import History from './History'
 import GiftCards from './GiftCards'
 import Promotions from './Promotions'
 import Invite from './Invite'
-import SavedDeals from '../SavedDeals'
 import AddFunds from './AddFunds'
-import MostPopular from '../MostPopular'
 import BuyGift from '../BuyGift'
 import ScanCard from './ScanCard'
 import Processed from '../Processed'
 import Checkout from '../Checkout'
 import RedeemGift from './RedeemGift'
+import RewardListGeneral from '../RewardListGeneral'
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -33,15 +32,10 @@ const MainProfile = () => {
               options={{headerShown: false}}
           />
           <Stack.Screen
-              name="SavedDeals"
-              component={SavedDeals}
-              options={{headerShown: false}}
-          />
-          <Stack.Screen
-              name="MostPopular"
-              component={MostPopular}
-              options={{headerShown: false}}
-          />
+            name="RewardListGeneral"
+            component={RewardListGeneral}
+            options={{headerShown: false}}
+        />
           <Stack.Screen
               name="About"
               component={About}

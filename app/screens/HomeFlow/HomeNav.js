@@ -4,12 +4,11 @@ import {} from 'react';
 import {} from 'react-native';
 import HomeMain from './Home'
 import HowItWorks from './HowItWorks'
-import SavedDeals from '../SavedDeals'
-import MostPopular from '../MostPopular'
 import BuyGift from '../BuyGift'
 import GiftCards from '../ProfileFlow/GiftCards'
 import Processed from '../Processed'
 import Checkout from '../Checkout'
+import RewardListGeneral from '../RewardListGeneral'
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -29,16 +28,6 @@ const HomeNav = () => {
             component={HowItWorks}
             options={{headerShown: false}}
         />
-        <Stack.Screen
-              name="SavedDeals"
-              component={SavedDeals}
-              options={{headerShown: false}}
-          />
-          <Stack.Screen
-              name="MostPopular"
-              component={MostPopular}
-              options={{headerShown: false}}
-          />
           <Stack.Screen
               name="BuyGift"
               component={BuyGift}
@@ -59,6 +48,11 @@ const HomeNav = () => {
               component={GiftCards}
               options={{headerShown: false}}
           />
+          <Stack.Screen
+            name="RewardListGeneral"
+            component={RewardListGeneral}
+            options={{headerShown: false}}
+        />
       </Stack.Navigator>
   );
 };

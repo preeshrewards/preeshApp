@@ -12,6 +12,7 @@ import giftCard from '../../../assets/giftCard.png'
 import { useFonts } from 'expo-font';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Rewards from '../../Models/Model';
 
 
 MaterialIcons.loadFont();
@@ -119,7 +120,11 @@ const opacityStyle = { opacity: opacityAnimation };
     }
 
   };
-
+  const rewards = new Rewards();
+  const rewards1 = rewards.rewards1;
+  const rewards2 = rewards.rewards2;
+  const popularTitle = "Most Popular";
+  const savedTitle = "Saved Deals"
   const [shouldShow, setShouldShow] = useState(true);
   const [upOrdown, setUpOrdown] = useState(true);
   const toggleOpen = () => {
@@ -168,15 +173,15 @@ const opacityStyle = { opacity: opacityAnimation };
       <Animated.View style={!upOrdown ? ({...homeStyles.tabContainer, ...homeStyles.blur, opacityAnimation}) : homeStyles.tabContainer}>
         <TouchableOpacity 
         onPress={() =>
-          navigation.navigate('MostPopular', {})
+          navigation.navigate('RewardListGeneral', {rewards1, rewards2, popularTitle})
         }
         style={homeStyles.tab1}>
           <Text style={homeStyles.tabLabel}>Most{'\n'}Popular</Text>
           <MaterialIcons style={homeStyles.tabIcon} name="favorite" size={39.62} color={'#208B3A'} />
         </TouchableOpacity>
-        <TouchableOpacity 
+        <TouchableOpacity
         onPress={() =>
-          navigation.navigate('SavedDeals', {})
+          navigation.navigate('RewardListGeneral', {rewards1, rewards2, savedTitle})
         }
         style={homeStyles.tab2}>
         <Text style={homeStyles.tabLabel}>Saved{'\n'}Deals</Text>

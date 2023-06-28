@@ -4,6 +4,7 @@ import {} from 'react';
 import {} from 'react-native';
 import BrowseMain from './Browse'
 import Search from './Search'
+import RewardListGeneral from '../RewardListGeneral'
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -19,8 +20,8 @@ const BrowseNav = () => {
             options={{headerShown: false}}
         />
         <Stack.Screen
-            name="Search"
-            component={Search}
+            name="RewardListGeneral"
+            component={RewardListGeneral}
             options={{headerShown: false}}
         />
       </Stack.Navigator>

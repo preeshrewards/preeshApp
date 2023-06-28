@@ -2,52 +2,29 @@ import React, {useState, useRef} from 'react';
 import {View, Text, SafeAreaView, StyleSheet, Image, Animated, Easing} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import restaurantImagePlaceholder from '../../assets/restaurantImagePlaceholder.png'
+import Subway from '../../assets/Subway.png'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
-import Subway from '../../assets/Subway.png'
 import Popup from './DealPopup';
+import coin from '../../assets/coin.png'
 
 AntDesign.loadFont();
 MaterialIcons.loadFont();
+Feather.loadFont();
 
-class SavedReward {
-  points = 0
-  picture = ""
-  rewardDescription = ""
-  restaurantName = ""
+const RewardListGeneral = ( {route, navigation} ) => {
+    const { rewards1, rewards2, browseTitle, popularTitle, favoritesTitle, savedTitle} = route.params;
+    let title = "Browse Deals";
+    if (popularTitle) title = popularTitle;
+    else if (favoritesTitle) title = favoritesTitle;
+    else if (savedTitle) title = savedTitle;
 
-  constructor(points, picture, rewardDescription, restaurantName) {
-    this.points = points;
-    this.picture = picture;
-    this.rewardDescription = rewardDescription
-    this.restaurantName = restaurantName
-  }
-  
-  // constructor() {}
-};
-
-const rewards1 = [new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell"),
-                new SavedReward(10, Subway, "Buy 1 get 1 free", "Taco Bell"),
-                new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell"),
-                new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell"),
-                new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell"),
-                new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell")];
-// const rewards = []
-const rewards2 = [new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell"),
-                new SavedReward(10, Subway, "Buy 1 get 1 free", "Taco Bell"),
-                new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell"),
-                new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell"),
-                new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell"),
-                new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell")];
-
-
-const MostPopular = ( {navigation} ) => {
-  const [isBlur, setBlur] = useState(false);
-  const [reward, setReward] =useState(null)
-  const opacityAnimation = useRef(new Animated.Value(0.2)).current;
-  const opacityStyle = { opacity: opacityAnimation };
-  const animateElement = () => {
+    const [isBlur, setBlur] = useState(false);
+    const [reward, setReward] =useState(null)
+    const opacityAnimation = useRef(new Animated.Value(0.2)).current;
+    const opacityStyle = { opacity: opacityAnimation };
+    const animateElement = () => {
 
     Animated.timing(opacityAnimation, {
       toValue: 0,
@@ -62,12 +39,10 @@ const MostPopular = ( {navigation} ) => {
       }).start()
     })
   };
-
   const handlePress = (reward) => {
     setBlur(true);
     setReward(reward)
   }
-
   return (
     <SafeAreaView>
       {isBlur ? <Popup argument={reward}/>: null}
@@ -77,14 +52,13 @@ const MostPopular = ( {navigation} ) => {
         setBlur(false)
       }
       style={{top: 125, left: 330, position: 'absolute'}} color={'#10451D'} name="x" size={30}/> : null}
-      <Text style={savedDealsStyles.title}>Most Popular Deals</Text>
+      <Text style={savedDealsStyles.title}>{title}</Text>
         <AntDesign style={savedDealsStyles.backArrow} name="arrowleft" size={24} color={'black'}
                 onPress={() =>
-                  navigation.goBack(null)
+                    navigation.goBack(null)
                   }
         />
-
-      <Animated.ScrollView 
+      <Animated.ScrollView
       showsVerticalScrollIndicator={false}
       style={[
         savedDealsStyles.dealsContainer, 
@@ -99,12 +73,16 @@ const MostPopular = ( {navigation} ) => {
               <View style={{flexDirection: 'row', gap: 20}}>
                 <View>
                   <Text style={{fontWeight: 400, fontSize: 15}}>{reward.restaurantName}</Text>
-                  <Text style={{fontWeight: 400, fontSize: 13, color: '#155D27'}}>{reward.rewardDescription}</Text>
+                  <Text style={savedDealsStyles.descriptionText}>{reward.rewardDescription}</Text>
                 </View>
                   <MaterialIcons name="qr-code" size={24} style={{top: 0}}
                   onPress={() =>
                     handlePress(reward)
                   }/>
+              </View>
+              <View style={savedDealsStyles.points}>
+                        <Text style={savedDealsStyles.pointsText}>{reward.points} Preesh </Text>
+                        <Image source={coin} style={savedDealsStyles.coin}/>
               </View>
             </View>
           );
@@ -116,15 +94,20 @@ const MostPopular = ( {navigation} ) => {
          return (
           <View style={savedDealsStyles.dealView}>
             <Image source={reward.picture} style={savedDealsStyles.picture}/>
+            <View style={savedDealsStyles.points}>
+                        <Text style={savedDealsStyles.pointsText}>{reward.points} Preesh </Text>
+                        <Image source={coin} style={savedDealsStyles.coin}/>
+              </View>
             <View style={{flexDirection: 'row', gap: 20}}>
                 <View>
                   <Text style={{fontWeight: 400, fontSize: 15}}>{reward.restaurantName}</Text>
-                  <Text style={{fontWeight: 400, fontSize: 13, color: '#155D27'}}>{reward.rewardDescription}</Text>
+                  <Text style={savedDealsStyles.descriptionText}>{reward.rewardDescription}</Text>
                 </View>
-                  <MaterialIcons name="qr-code" size={24} style={{top: 0}}
+                  <MaterialIcons
                   onPress={() =>
                     handlePress(reward)
-                  }/>
+                  }
+                  name="qr-code" size={24} style={{top: 0}}/>
               </View>
             </View>
          );
@@ -138,6 +121,9 @@ const MostPopular = ( {navigation} ) => {
 };
 
 const savedDealsStyles = StyleSheet.create({
+  blur: {
+    opacity: 0.2
+  },
   backArrow: {
     left: 29,
     top: 80,
@@ -162,10 +148,33 @@ const savedDealsStyles = StyleSheet.create({
     flexDirection: 'column',
     marginBottom: 7
   },
+  descriptionText: {
+    fontWeight: 400,
+    fontSize: 13,
+    color: '#155D27'
+  },
+  points: {
+    flexDirection: 'row',
+    position: 'absolute',
+    top: 64,
+    backgroundColor: '#B7EFC5',
+    padding: 4,
+    borderRadius: 10,
+    left: 2
+  },
+  pointsText: {
+    fontWeight: 600,
+    fontSize: 13,
+    color: '#208B3A'
+  },
   picture: {
     width: 140,
     height: 92
+  },
+  coin: {
+    height: 19,
+    width: 12,
   }
 });
 
-export default MostPopular;
+export default RewardListGeneral;

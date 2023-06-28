@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View} from 'react-native';
 import Login from './app/screens/Login'
 import HomeNav from './app/screens/HomeFlow/HomeNav'
-import Browse from './app/screens/BrowseFlow/Browse'
+import BrowseNav from './app/screens/BrowseFlow/BrowseNav'
 import Scan from './app/screens/Scan'
 import ProfileNav from './app/screens/ProfileFlow/ProfileNav'
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -20,10 +20,10 @@ const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-    tabBarOptions={{
+    screenOptions={({ route }) => ({
       style: styles.tabBar,
       activeTintColor: '#208B3A',
-    }}>
+    })}>
       <Tab.Screen
         name="Home"
         component={HomeNav}
@@ -42,13 +42,19 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Browse"
-        component={Browse}
+        component={BrowseNav}
         options={{
           tabBarIcon: ({color}) => (
             <MaterialIcons name="search" size={32} color={color} />
           ),
           headerShown: false,
         }}
+        listeners={({ navigation }) => ({
+          tabPress: e => {
+            e.preventDefault();
+            navigation.navigate('Browse', { screen: 'BrowseMain' });
+          },
+        })}
       />
       <Tab.Screen
         name="Scan"
