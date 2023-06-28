@@ -20,9 +20,9 @@ const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-    screenOptions={({ route }) => ({
-      style: styles.tabBar,
-      activeTintColor: '#208B3A',
+    screenOptions={() => ({
+      tabBarStyle: styles.tabBar,
+      tabBarActiveTintColor: '#208B3A',
     })}>
       <Tab.Screen
         name="Home"

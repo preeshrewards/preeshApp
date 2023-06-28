@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, Image, Button, Pressable} from 'react-native';
-import { SearchBar } from "react-native-elements";
+import React, {useState, useRef} from 'react';
+import {View, Text, StyleSheet, Image, Button, Pressable, Animated, Easing} from 'react-native';
+// import { SearchBar } from "react-native-elements";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import restaurantImagePlaceholder from '../../../assets/restaurantImagePlaceholder.png'
 import Subway from '../../../assets/Subway.png'
@@ -10,8 +10,11 @@ import Popup from '../DealPopup';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import coin from '../../../assets/coin.png'
 import Rewards from '../../Models/Model';
+import Feather from 'react-native-vector-icons/Feather';
+import SearchBar from './SearchBar'
 
 MaterialIcons.loadFont();
+Feather.loadFont();
                 
 const Browse = ( {navigation} ) => {
     const browseTitle = "Browse Places";
@@ -22,26 +25,50 @@ const Browse = ( {navigation} ) => {
     const rewards1 = rewards.rewards1;
     const rewards2 = rewards.rewards2;
 
+    const [isBlur, setBlur] = useState(false);
+
+    updateSearch = (search) => {
+        setSearch(search);
+      };
+
+    const [reward, setReward] =useState(null)
+    const opacityAnimation = useRef(new Animated.Value(0.2)).current;
+    const opacityStyle = { opacity: opacityAnimation };
+    const animateElement = () => {
+
+    Animated.timing(opacityAnimation, {
+      toValue: 0,
+      duration: 5000,
+      useNativeDriver: true,
+      easing: Easing.ease
+    }).start(() => {
+      Animated.timing(opacityAnimation, {
+        toValue: 1,
+        duration: 5000,
+        useNativeDriver: true
+      }).start()
+    })
+  };
+  const handlePress = (reward) => {
+    setBlur(true);
+    setReward(reward)
+  }
+
   return (
     <SafeAreaView >
         <Image source={logo} style={savedDealsStyles.logo}/>
+        {isBlur ? <Popup argument={reward}/>: null}
+        {isBlur ?
+      <Feather
+      onPress={() =>
+        setBlur(false)
+      }
+      style={{top: 125, left: 330, position: 'absolute'}} color={'#10451D'} name="x" size={30}/> : null}
         {/* Search */}
-        <SearchBar
-        containerStyle={{backgroundColor: 'transparent', top: 50, height: 38, alignSelf: 'center', justifyContent: 'center'}}
-        inputContainerStyle={{borderRadius: 30, height: 38, width: 351, borderColor: 'transparent'}}
-        placeholder="Search Here..."
-        lightTheme
-        round
-        autoCorrect={false}
-        onClick ={() =>
-            navigation.navigate("Search")
-        }
-        style={{display: 'flex',
-        justifyContent: 'center',}}
-        />
+        <SearchBar/>
 
         {/* Browse Places */}
-        <ScrollView style={{top: 75}}>
+        <ScrollView style={[{top: 75}, isBlur ? { opacity: 0.2, opacityAnimation} : null]}>
             {/* Browse Places */}
             <View style={{top: 0}}>
                 <Text style={{marginLeft: 10, fontWeight: 600, fontSize: 17}}>Browse Places</Text>
@@ -257,6 +284,19 @@ const savedDealsStyles = StyleSheet.create({
         position: 'absolute',
         left: 40,
         top: 46,
+    },
+    containerStyle: {
+        backgroundColor: 'transparent',
+        top: 50,
+        height: 38,
+        alignSelf: 'center',
+        justifyContent: 'center'
+    },
+    inputContainerStyle: {
+        borderRadius: 30,
+        height: 38,
+        width: 351,
+        borderColor: 'transparent'
     }
 });
 

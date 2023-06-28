@@ -3,83 +3,94 @@ import {View, Text, SafeAreaView, StyleSheet, Pressable, Linking, Button, Scroll
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { QRCode } from 'react-native-custom-qr-codes-expo';
+import Popup from './PromoPopup';
+import Feather from 'react-native-vector-icons/Feather';
 
 AntDesign.loadFont();
 MaterialIcons.loadFont();
+Feather.loadFont();
+
+const code = "6132 7279 5118 3797"
+const promos = [
+    {
+      title: 'Earn 20, get 20',
+      detail: 'Earn 20 Preesh Points by May 31 and receive 20 additional preesh points for free!',
+      buttonText: 'Claim',
+      index: 0,
+      code: "6132 7279 5118 3797"
+    },
+    {
+      title: '30% Off',
+      detail: 'Get 30% off your next purchase at any Preesh partner!',
+      buttonText: 'Claim',
+      index: 1,
+      code: "6132 7279 5118 3797"
+    },
+    {
+      title: '30% Off',
+      detail: 'Get 30% off your next purchase at any Preesh partner!',
+      buttonText: 'Claim',
+      index: 2,
+      code: "6132 7279 5118 3797"
+    },
+  ];
 
 // Need to get list of promos with start and end dates
-
 const Promotions = ( {navigation} ) => {
-    const [pressed, setPressed] = useState({0: 0, 1: 0});  
-    let pressedList = [0, 0];
-    const setButton0 = ( ) => {
-        if (!pressed[0]) {
-            setPressed({ ...pressed, 0: !pressed[0] });
-            console.log(pressed)
-            // add actions adding this to saved promitions to use
+    const [pressed, setPressed] = useState({0: 0, 1: 0, 2: 0});  
+    const [promoPop, setPromoPop] = useState(null)
+
+    const setButton = (index) => {
+        if (!pressed[index]) {
+            console.log(index)
+            setPressed({ ...pressed, [index]: !pressed[index] });
+            // add actions adding this to saved promotions to use
         } 
     }
-    const setButton1 = ( ) => {
-        if (!pressed[1]) {
-            setPressed({ ...pressed, 1: !pressed[1] });
-            console.log(pressed)
-            // add actions adding this to saved promitions to use
-        } 
-    }
+
   return (
-    // <SafeAreaView>
-        <ScrollView style={{paddingBottom: 100}}>
+    <SafeAreaView>
+        {promoPop ? <Popup argument={promoPop}/>: null}
+        {promoPop ?
+      <Feather
+      onPress={() =>
+        setPromoPop(null)
+      }
+      style={{top: 125, left: 330, position: 'absolute'}} color={'#10451D'} name="x" size={30}/> : null}
         <Text style={promoStyles.title}>Promotions</Text>
         <AntDesign style={promoStyles.backArrow} name="arrowleft" size={24} color={'black'}
                 onPress={() =>
                     navigation.navigate('Profile', {})
                   }
         />
-        <View style={promoStyles.select}>
-            <Text style={promoStyles.promoTitle}>Earn 20, get 20</Text>
-            <Text style={promoStyles.promoDetail}>Earn 20 Preesh Points by May 31 and
-                                                receive 20 additional preesh points for free!</Text>
-                <Button 
-                onPress={() =>
-                    setButton0()
-                  }
-                 color={pressed[0] ? 'white' : null} title={pressed[0] ? 'Claimed' : 'Claim'}></Button>
-                 {pressed[0] ?
-                 <TouchableOpacity>
-                    <MaterialIcons name="qr-code" size={32} style={{alignSelf: 'center'}} color={'#208B3A'} />
-                 </TouchableOpacity> : null}
-        </View>
-        <View style={promoStyles.select}>
-        <Text style={promoStyles.promoTitle}>30% Off</Text>
-            <Text style={promoStyles.promoDetail}>Get 30% off your next purchase at any Preesh partner!</Text>
-                <Button 
-                onPress={() =>
-                    setButton1()
-                  }
-                  
-                 color={pressed[1] ? 'white' : null} title={pressed[1] ? 'Claimed' : 'Claim'}></Button>
-                 {pressed[1] ?
-                 <TouchableOpacity>
-                    <MaterialIcons name="qr-code" size={32} style={{alignSelf: 'center'}} color={'#208B3A'} />
-                 </TouchableOpacity> : null}
-        </View>
-        <View style={promoStyles.select}>
-        <Text style={promoStyles.promoTitle}>30% Off</Text>
-            <Text style={promoStyles.promoDetail}>Get 30% off your next purchase at any Preesh partner!</Text>
-                <Button 
-                onPress={() =>
-                    setButton1()
-                  }
-                  
-                 color={pressed[1] ? 'white' : null} title={pressed[1] ? 'Claimed' : 'Claim'}></Button>
-                 {pressed[1] ?
-                 <TouchableOpacity>
-                    <MaterialIcons name="qr-code" size={32} style={{alignSelf: 'center'}} color={'#208B3A'} />
-                 </TouchableOpacity> : null}
-        </View>
-        <View style={{height:200}}></View>
-        </ScrollView>
-    // {/* </SafeAreaView> */}
+
+    {!promoPop ?
+        <ScrollView style={{paddingBottom: 100, top: 80}}>
+        
+        {promos.map((promotion) => (
+    <View key={promotion.index} style={promoStyles.select}>
+      <Text style={promoStyles.promoTitle}>{promotion.title}</Text>
+      <Text style={promoStyles.promoDetail}>{promotion.detail}</Text>
+      <Button
+        onPress={() => setButton(promotion.index)}
+        color={pressed[promotion.index] ? 'white' : null}
+        title={pressed[promotion.index] ? 'Claimed' : promotion.buttonText}
+      />
+      {pressed[promotion.index] ? (
+        <TouchableOpacity
+        style={{ alignItems: 'center' }}
+        onPress={() => setPromoPop(promotion)}
+        >
+          <MaterialIcons name="qr-code" size={32} style={{ alignSelf: 'center' }} color={'#208B3A'} />
+          <Text style={{ fontWeight: 600 }}>Scan to use this promotion</Text>
+        </TouchableOpacity>
+      ) : null}
+    </View>
+  ))}
+    <View style={{height:100}}></View>
+    </ScrollView> : null}
+    </SafeAreaView>
   );
 };
 
@@ -97,7 +108,6 @@ const promoStyles = StyleSheet.create({
         borderColor: '#208B3A',
         backgroundColor: '#B7EFC5',
         borderStyle: 'dotted',
-        top: 125,
         alignSelf: 'center'
     },
     title: {

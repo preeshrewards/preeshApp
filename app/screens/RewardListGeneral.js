@@ -58,6 +58,7 @@ const RewardListGeneral = ( {route, navigation} ) => {
                     navigation.goBack(null)
                   }
         />
+        <MaterialIcons name="filter-list" size={24} style={savedDealsStyles.filterIcon}/>
       <Animated.ScrollView
       showsVerticalScrollIndicator={false}
       style={[
@@ -174,6 +175,11 @@ const savedDealsStyles = StyleSheet.create({
   coin: {
     height: 19,
     width: 12,
+  },
+  filterIcon: {
+    left: 300,
+    top: 80,
+    position: 'absolute'
   }
 });
 

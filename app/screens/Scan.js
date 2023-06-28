@@ -3,8 +3,8 @@ import React from 'react';
 import {View, Text, StyleSheet, Image, Button} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import logo from '../../assets/logo.png'
+import wallet from '../../assets/AppleWallet.png'
 import { QRCode } from 'react-native-custom-qr-codes-expo';
-// import WalletManager from 'react-native-wallet-manager';
 
 const code = "6132 7279 5118 3797"
 const Scan = () => {
@@ -15,11 +15,11 @@ const Scan = () => {
         <View style={scanStyles.line}></View>
       </View>
       <View style={{alignSelf: 'center', top: 250, position: 'absolute'}}>
-        <QRCode size={250} content={code}/>
+        <QRCode size={200} content={code}/>
       </View>
       <Text style={scanStyles.code}>{code}</Text>
       <Text style={scanStyles.message}>Scan to collect rewards</Text>
-      {/* <Button title="Add to Wallet" onPress={addToWallet} /> */}
+      <Image source={wallet} style={scanStyles.wallet}/>
     </SafeAreaView>
   );
 };
@@ -27,8 +27,8 @@ const Scan = () => {
 const scanStyles = StyleSheet.create({
   container: {
     width: 339,
-    height: 550,
-    top: 88,
+    height: 500,
+    top: 100,
     alignSelf: 'center',
     borderWidth: 5,
     borderColor: '#208B3A',
@@ -41,6 +41,13 @@ const scanStyles = StyleSheet.create({
     height: 78,
     top: 17,
   },
+  wallet: {
+    width: 166.1,
+    height: 51.49,
+    top: 625,
+    alignSelf: 'center',
+    position: 'absolute'
+  },
   line: {
     height: 5,
     backgroundColor: '#208B3A',
@@ -52,15 +59,15 @@ const scanStyles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 400,
     position: 'absolute',
-    top: 560,
+    top: 522,
     alignSelf: 'center',
     color: '#545454'
   },
   code: {
     fontSize: 15,
-    fontWeight: 400,
+    fontWeight: 600,
     position: 'absolute',
-    top: 500,
+    top: 462,
     alignSelf: 'center',
     color: '#545454'
   }
