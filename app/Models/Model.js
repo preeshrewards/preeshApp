@@ -13,7 +13,7 @@ class SavedReward {
 class Rewards {
   rewards1 = [
     new SavedReward(20, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell", "6132 7279 5118 3797"),
-    new SavedReward(10, Subway, "Buy 1 get 1 free", "Taco Bell", "6132 7279 5118 3797"),
+    new SavedReward(10, Subway, "Buy 1 get 1 free", "Subway", "6132 7279 5118 3797"),
     new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell", "6132 7279 5118 3797"),
     new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell", "6132 7279 5118 3797"),
     new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell", "6132 7279 5118 3797"),
@@ -22,7 +22,7 @@ class Rewards {
   
   rewards2 = [
     new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell", "6132 7279 5118 3797"),
-    new SavedReward(10, Subway, "Buy 1 get 1 free", "Taco Bell", "6132 7279 5118 3797"),
+    new SavedReward(10, Subway, "Buy 1 get 1 free", "Subway", "6132 7279 5118 3797"),
     new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell", "6132 7279 5118 3797"),
     new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell", "6132 7279 5118 3797"),
     new SavedReward(10, restaurantImagePlaceholder, "Buy 1 get 1 free", "Taco Bell", "6132 7279 5118 3797"),

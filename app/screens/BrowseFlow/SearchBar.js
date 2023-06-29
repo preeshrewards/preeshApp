@@ -3,9 +3,20 @@ import React, {useState} from "react";
 import { StyleSheet, TextInput, View, Keyboard, Button } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 
-const SearchBar = () => {
+const SearchBar = ( {onClickedStateChange, onSearchStateChange} ) => {
     const [clicked, setClicked] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState(false);
+
+    const handleClickedStatechange = (newState) => {
+        setClicked(newState);
+        onClickedStateChange(newState); // Notify the parent about the state change
+      };
+
+      const handleSearchChange = (query) => {
+        // console.log(query)
+        setSearchPhrase(query)
+        onSearchStateChange(query); // Notify the parent about the state change
+      };
   return (
     <View style={styles.container}>
       <View
@@ -27,9 +38,9 @@ const SearchBar = () => {
           style={styles.input}
           placeholder="Search restaurants..."
           value={searchPhrase}
-          onChangeText={setSearchPhrase}
+          onChangeText={handleSearchChange}
           onFocus={() => {
-            setClicked(true);
+            handleClickedStatechange(true);
           }}
         />
         {/* cross Icon, depending on whether the search bar is clicked or not */}
@@ -46,7 +57,7 @@ const SearchBar = () => {
             title="Cancel"
             onPress={() => {
               Keyboard.dismiss();
-              setClicked(false);
+              handleClickedStatechange(false);
               setSearchPhrase(null)
             }}
           ></Button>
@@ -60,22 +71,24 @@ export default SearchBar;
 // styles
 const styles = StyleSheet.create({
   container: {
-    margin: 15,
+    margin: 10,
     justifyContent: "flex-start",
     alignItems: "center",
     flexDirection: "row",
-    width: 351,
+    width: 375,
     height: 38,
     top: 50,
-    left: 10
+    alignSelf: 'center',
+    left: 2
   },
   searchBar__unclicked: {
     padding: 10,
     flexDirection: "row",
     width: "95%",
     backgroundColor: "#D9D9D9",
-    borderRadius: 15,
+    borderRadius: 30,
     alignItems: "center",
+    left: 5
   },
   searchBar__clicked: {
     padding: 10,

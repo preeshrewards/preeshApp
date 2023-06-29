@@ -12,6 +12,7 @@ import coin from '../../../assets/coin.png'
 import Rewards from '../../Models/Model';
 import Feather from 'react-native-vector-icons/Feather';
 import SearchBar from './SearchBar'
+import Search from './Search'
 
 MaterialIcons.loadFont();
 Feather.loadFont();
@@ -27,11 +28,23 @@ const Browse = ( {navigation} ) => {
 
     const [isBlur, setBlur] = useState(false);
 
-    updateSearch = (search) => {
-        setSearch(search);
-      };
-
     const [reward, setReward] =useState(null)
+    const [searching, setSearching] = useState(false)
+    const [searchText, setSearchText] = useState("")
+    const handleClickedStateChange = (newState) => {
+        setSearching(newState);
+  };
+
+  const handleSearchStateChange = (query) => {
+    setSearchText(query)
+};
+
+const handleBlurStateChange = (newState, reward) => {
+    console.log("reward: " + reward);
+    console.log("newstate: " + newState);
+    setReward(reward)
+    setBlur(newState)
+};
     const opacityAnimation = useRef(new Animated.Value(0.2)).current;
     const opacityStyle = { opacity: opacityAnimation };
     const animateElement = () => {
@@ -60,15 +73,24 @@ const Browse = ( {navigation} ) => {
         {isBlur ? <Popup argument={reward}/>: null}
         {isBlur ?
       <Feather
-      onPress={() =>
-        setBlur(false)
-      }
+      onPress={() => {
+        setSearching(false);
+        setBlur(false);
+        setSearchText("")
+      }}
       style={{top: 125, left: 330, position: 'absolute'}} color={'#10451D'} name="x" size={30}/> : null}
         {/* Search */}
-        <SearchBar/>
-
-        {/* Browse Places */}
-        <ScrollView style={[{top: 75}, isBlur ? { opacity: 0.2, opacityAnimation} : null]}>
+        {!isBlur ?
+        <SearchBar
+        onClickedStateChange={handleClickedStateChange}
+        onSearchStateChange={handleSearchStateChange}
+        />: null}
+        {searching && !isBlur?
+        <Search 
+        onRewardStateChange={handleBlurStateChange}
+        // onRewardChange={handleRewardChange}
+        searchText={searchText}/> : (
+        <ScrollView style={[{top: 75}, isBlur ? { opacity: 0, opacityAnimation} : null]}>
             {/* Browse Places */}
             <View style={{top: 0}}>
                 <Text style={{marginLeft: 10, fontWeight: 600, fontSize: 17}}>Browse Places</Text>
@@ -221,7 +243,7 @@ const Browse = ( {navigation} ) => {
                 </Pressable>
                 <View style={[savedDealsStyles.line, {top: 210}]}></View>
             </View>
-        </ScrollView>
+        </ScrollView>)}
         
 
         

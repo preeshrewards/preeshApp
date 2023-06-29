@@ -3,39 +3,14 @@ import {View, Text, SafeAreaView, StyleSheet, Image, ScrollView} from 'react-nat
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import restaurantImagePlaceholder from '../../../assets/restaurantImagePlaceholder.png'
 import coin from '../../../assets/coin.png'
-// import RewardUsed from '../../Models/User'
+import Rewards from '../../Models/Model';
 
 
 AntDesign.loadFont();
 
-class RewardUsed {
-    points = 0
-    picture = ""
-    date = Date()
-    rewardDescription = ""
-    restaurantName = ""
-  
-    constructor(points, picture, date, rewardDescription, restaurantName) {
-      this.points = points;
-      this.picture = picture;
-      this.date = date;
-      this.rewardDescription = rewardDescription
-      this.restaurantName = restaurantName
-    }
-    
-    // constructor() {}
-  };
-  
-const r = new RewardUsed(10, restaurantImagePlaceholder, new Date(), "Buy 1 get 1 free", "Taco Bell");
-const rewards = [new RewardUsed(10, restaurantImagePlaceholder, new Date().toLocaleDateString(), "Buy 1 get 1 free", "Taco Bell"),
-                new RewardUsed(10, restaurantImagePlaceholder, new Date().toLocaleDateString(), "Buy 1 get 1 free", "Taco Bell"),
-                new RewardUsed(10, restaurantImagePlaceholder, new Date().toLocaleDateString(), "Buy 1 get 1 free", "Taco Bell"),
-                new RewardUsed(10, restaurantImagePlaceholder, new Date().toLocaleDateString(), "Buy 1 get 1 free", "Taco Bell"),
-                new RewardUsed(10, restaurantImagePlaceholder, new Date().toLocaleDateString(), "Buy 1 get 1 free", "Taco Bell"),
-                new RewardUsed(10, restaurantImagePlaceholder, new Date().toLocaleDateString(), "Buy 1 get 1 free", "Taco Bell")];
-// const rewards = []
-
-const History = ( {navigation} ) => {    
+const History = ( {navigation} ) => {  
+    const rewardsObj = new Rewards();
+    const rewards = rewardsObj.rewards1;
   return (
     <SafeAreaView>
         <Text style={historyStyles.title}>Past Rewards Used</Text>
@@ -55,7 +30,7 @@ const History = ( {navigation} ) => {
          return (
             <View style={historyStyles.orders}>
                 <Image source={reward.picture} style={historyStyles.picture}/>
-                <View style={{flexDirection: 'column', left:100, gap: 5}}>
+                <View style={{flexDirection: 'column', left:20, top: 7, gap: 5}}>
                     <Text style={{fontWeight: 600, fontSize: 15}}>{reward.restaurantName}</Text>
                     <View style={{flexDirection: 'row'}}>
                         <Text style={{fontWeight: 700, fontSize: 14, color: '#208B3A'}}>{reward.points} Preesh </Text>
@@ -100,12 +75,14 @@ const historyStyles = StyleSheet.create({
     },
     orders: {
         paddingHorizontal: 50,
-        paddingVertical: 20,
+        paddingVertical: 10,
         margin: 8,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: 'grey',
         backgroundColor: '#f9f9f9',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flexDirection: 'row',
+        alignItems: 'center',
     },
     picture: {
         height: 80,

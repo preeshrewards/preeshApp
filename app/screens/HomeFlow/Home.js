@@ -22,7 +22,8 @@ FontAwesome.loadFont();
 // at 200 deg=0, height =88, left = 169
 // at 300 deg=45, height =88, left = 218
 let status = "Platinum"
-let user = "Noah Nefsky"
+let firstName = "Noah"
+let lastName = "Nefsky"
 let pointsTotal = 200.0
 let arrowHeight = 88.0
 let angle = 0.0
@@ -136,7 +137,7 @@ const opacityStyle = { opacity: opacityAnimation };
   return (
     <SafeAreaView>
       <Image source={logo} style={homeStyles.logo}/>
-      <Text style={homeStyles.welcome}>Welcome Gina👋</Text>
+      <Text style={homeStyles.welcome}>Welcome {firstName}👋</Text>
       <View style={homeStyles.barContainer}>
         <View style={homeStyles.howItWorks}>
           <TouchableOpacity 
@@ -192,7 +193,7 @@ const opacityStyle = { opacity: opacityAnimation };
 
       <Animated.View style={!upOrdown ? ({...homeStyles.cardContainer, ...homeStyles.blur, opacityAnimation}) : homeStyles.cardContainer}>
       <Image source={giftCard} style={homeStyles.card}/>
-      <Text style={homeStyles.cardUser}>{user}</Text>
+      <Text style={homeStyles.cardUser}>{firstName + " " + lastName}</Text>
       <Text style={homeStyles.cardText}>Exchange your Preesh Points for gift card money redeemable
       at any of our Preesh partners.
       </Text>
