@@ -28,10 +28,7 @@ const Search = ( {searchText, onRewardStateChange} ) => {
         results = []
         setReward(reward);
         onRewardStateChange(newState, reward);
-      }
-
-      console.log("term: " + searchText)
-      
+      }      
 
   return (
     <View style={{top: 65}}>

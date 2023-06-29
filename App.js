@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View} from 'react-native';
+import { LogBox, StyleSheet, Text, View} from 'react-native';
 import Login from './app/screens/Login'
 import HomeNav from './app/screens/HomeFlow/HomeNav'
 import BrowseNav from './app/screens/BrowseFlow/BrowseNav'
@@ -11,6 +11,9 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+// Ignore all warnings
+// LogBox.ignoreAllLogs();
 
 MaterialIcons.loadFont();
 

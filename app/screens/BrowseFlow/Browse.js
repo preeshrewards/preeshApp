@@ -33,6 +33,9 @@ const Browse = ( {navigation} ) => {
     const [searchText, setSearchText] = useState("")
     const handleClickedStateChange = (newState) => {
         setSearching(newState);
+        if (!searching) {
+            setSearchText("")
+        }
   };
 
   const handleSearchStateChange = (query) => {
@@ -40,8 +43,7 @@ const Browse = ( {navigation} ) => {
 };
 
 const handleBlurStateChange = (newState, reward) => {
-    console.log("reward: " + reward);
-    console.log("newstate: " + newState);
+    
     setReward(reward)
     setBlur(newState)
 };
@@ -74,9 +76,12 @@ const handleBlurStateChange = (newState, reward) => {
         {isBlur ?
       <Feather
       onPress={() => {
-        setSearching(false);
+        // if (!searching) {
+        //     setSearchText("")
+        // }
+        // setSearching(false);
         setBlur(false);
-        setSearchText("")
+        
       }}
       style={{top: 125, left: 330, position: 'absolute'}} color={'#10451D'} name="x" size={30}/> : null}
         {/* Search */}
@@ -84,6 +89,7 @@ const handleBlurStateChange = (newState, reward) => {
         <SearchBar
         onClickedStateChange={handleClickedStateChange}
         onSearchStateChange={handleSearchStateChange}
+        isSearching={searchText}
         />: null}
         {searching && !isBlur?
         <Search 

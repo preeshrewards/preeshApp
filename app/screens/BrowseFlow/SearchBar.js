@@ -3,9 +3,9 @@ import React, {useState} from "react";
 import { StyleSheet, TextInput, View, Keyboard, Button } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 
-const SearchBar = ( {onClickedStateChange, onSearchStateChange} ) => {
-    const [clicked, setClicked] = useState(false);
-    const [searchPhrase, setSearchPhrase] = useState(false);
+const SearchBar = ( {isSearching, onClickedStateChange, onSearchStateChange} ) => {
+    const [clicked, setClicked] = useState(isSearching);
+    const [searchPhrase, setSearchPhrase] = useState(isSearching);
 
     const handleClickedStatechange = (newState) => {
         setClicked(newState);
@@ -13,7 +13,6 @@ const SearchBar = ( {onClickedStateChange, onSearchStateChange} ) => {
       };
 
       const handleSearchChange = (query) => {
-        // console.log(query)
         setSearchPhrase(query)
         onSearchStateChange(query); // Notify the parent about the state change
       };
@@ -46,7 +45,7 @@ const SearchBar = ( {onClickedStateChange, onSearchStateChange} ) => {
         {/* cross Icon, depending on whether the search bar is clicked or not */}
         {clicked && (
           <Entypo name="cross" size={20} color="black" style={{ padding: 1 }} onPress={() => {
-              setSearchPhrase("")
+            //   setSearchPhrase("")
           }}/>
         )}
       </View>
