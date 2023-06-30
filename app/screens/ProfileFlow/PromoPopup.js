@@ -8,7 +8,6 @@ import coin from '../../../assets/coin.png'
 
 const Popup = ( {argument} ) => {
   const promo = argument
-  console.log(promo)
   return (
     <View style={scanStyles.container}>
       <Image source={logo} style={scanStyles.logo}/>

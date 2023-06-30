@@ -45,7 +45,7 @@ const SearchBar = ( {isSearching, onClickedStateChange, onSearchStateChange} ) =
         {/* cross Icon, depending on whether the search bar is clicked or not */}
         {clicked && (
           <Entypo name="cross" size={20} color="black" style={{ padding: 1 }} onPress={() => {
-            //   setSearchPhrase("")
+              setSearchPhrase("")
           }}/>
         )}
       </View>

@@ -15,7 +15,6 @@ let emailMessage = `To use this giftcard, go to gift cards in your` + `profile s
 
 const Processed = ( {route, navigation} ) => {
     const gift = route.params;
-    console.log(gift)
     const [isGift] = useState(gift);   
     const [copiedText, setCopiedText] = useState('');
 

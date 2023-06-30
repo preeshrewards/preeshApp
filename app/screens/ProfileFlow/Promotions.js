@@ -43,7 +43,6 @@ const Promotions = ( {navigation} ) => {
 
     const setButton = (index) => {
         if (!pressed[index]) {
-            console.log(index)
             setPressed({ ...pressed, [index]: !pressed[index] });
             // add actions adding this to saved promotions to use
         } 

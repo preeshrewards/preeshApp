@@ -13,7 +13,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // Ignore all warnings
-// LogBox.ignoreAllLogs();
+LogBox.ignoreAllLogs();
 
 MaterialIcons.loadFont();
 
