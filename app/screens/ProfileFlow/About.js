@@ -33,7 +33,7 @@ const About = ( {navigation} ) => {
 
 const aboutStyles = StyleSheet.create({
     backArrow: {
-        left: 29,
+        left: '8%',
         top: 80,
         position: 'absolute',
         height: 24

@@ -94,23 +94,22 @@ const profileStyles = StyleSheet.create({
         width: 109,
         height: 34,
         position: 'absolute',
-        left: 40,
+        left: '10.25%',
         top: 46,
     },
     name: {
         fontWeight: 700,
         fontSize: 17,
-        position: 'absolute',
-        left: 47,
-        top: 106,
+        top: 62,
+        left: '12%',
     },
     container1: {
         width: 85,
         height: 92,
-        top: 65,
+        top: 0,
         alignItems: 'center',
-        left: 257,
-        position: 'absolute',
+        left: '66%',
+        // position: 'absolute',
     },
     icon: {
         borderRadius: 42.5,
@@ -162,6 +161,7 @@ const profileStyles = StyleSheet.create({
           width: '100%',
           height: 321,
           position: 'absolute',
+          alignSelf: 'center',
           top: 306,
           gap: 15,
           borderTopLeftRadius: 20,
@@ -180,7 +180,8 @@ const profileStyles = StyleSheet.create({
           top: 20,
           width: 30.86,
           height: 258.2,
-          gap: 30
+          gap: 30,
+          alignSelf: 'center'
       },
       bottomIcons: {
       }

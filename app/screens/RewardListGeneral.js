@@ -44,14 +44,14 @@ const RewardListGeneral = ( {route, navigation} ) => {
     setReward(reward)
   }
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{width: '100%', alignItems: 'center'}}>
       {isBlur ? <Popup argument={reward}/>: null}
       {isBlur ?
       <Feather
       onPress={() =>
         setBlur(false)
       }
-      style={{top: 125, left: 330, position: 'absolute'}} color={'#10451D'} name="x" size={30}/> : null}
+      style={{top: '10%', left: '85%', position: 'absolute'}} color={'#10451D'} name="x" size={30}/> : null}
       <Text style={savedDealsStyles.title}>{title}</Text>
         <AntDesign style={savedDealsStyles.backArrow} name="arrowleft" size={24} color={'black'}
                 onPress={() =>
@@ -126,7 +126,7 @@ const savedDealsStyles = StyleSheet.create({
     opacity: 0.2
   },
   backArrow: {
-    left: 29,
+    left: '8%',
     top: 80,
     position: 'absolute',
     height: 24,
@@ -139,7 +139,6 @@ const savedDealsStyles = StyleSheet.create({
       alignSelf: 'center'
   },
   dealsContainer: {
-      left: 40,
       width: 310,
       top: 80,
   },
@@ -177,7 +176,7 @@ const savedDealsStyles = StyleSheet.create({
     width: 12,
   },
   filterIcon: {
-    left: 300,
+    left: '75%',
     top: 80,
     position: 'absolute'
   }

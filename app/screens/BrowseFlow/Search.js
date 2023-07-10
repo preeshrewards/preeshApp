@@ -31,7 +31,7 @@ const Search = ( {searchText, onRewardStateChange} ) => {
       }      
 
   return (
-    <View style={{top: 65}}>
+    <View style={{top: 65, width: '100%'}}>
         {/* {reward ? (<View><Popup argument={reward}/><Feather
             onPress={() => {
                 handlePress(null);
@@ -62,7 +62,7 @@ const Search = ( {searchText, onRewardStateChange} ) => {
             </View>
          );
       })}
-      <View style={{height:200}}></View>
+      <View style={{height:250}}></View>
       </ScrollView>
       {/* )} */}
  </View>

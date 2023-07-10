@@ -70,7 +70,8 @@ const handleBlurStateChange = (newState, reward) => {
   }
 
   return (
-    <SafeAreaView >
+    <SafeAreaView>
+        <View style={{width: '100%', alignItems: 'center'}}>
         <Image source={logo} style={savedDealsStyles.logo}/>
         {isBlur ? <Popup argument={reward}/>: null}
         {isBlur ?
@@ -83,7 +84,7 @@ const handleBlurStateChange = (newState, reward) => {
         setBlur(false);
         
       }}
-      style={{top: 125, left: 330, position: 'absolute'}} color={'#10451D'} name="x" size={30}/> : null}
+      style={{top: '5%', left: '85%', position: 'absolute'}} color={'#10451D'} name="x" size={30}/> : null}
         {/* Search */}
         {!isBlur ?
         <SearchBar
@@ -253,7 +254,7 @@ const handleBlurStateChange = (newState, reward) => {
         
 
         
-            
+        </View>
     </SafeAreaView>
   );
 };
@@ -310,8 +311,8 @@ const savedDealsStyles = StyleSheet.create({
         width: 109,
         height: 34,
         position: 'absolute',
-        left: 40,
-        top: 46,
+        left: '10.25%',
+        // top: 46,
     },
     containerStyle: {
         backgroundColor: 'transparent',

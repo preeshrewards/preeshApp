@@ -51,7 +51,7 @@ const scanStyles = StyleSheet.create({
     top: 17,
   },
   backArrow: {
-    left: 29,
+    left: '8%',
     top: 80,
     position: 'absolute',
     height: 24

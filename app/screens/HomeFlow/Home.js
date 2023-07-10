@@ -135,7 +135,8 @@ const opacityStyle = { opacity: opacityAnimation };
   }
   
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{width: '100%', alignItems: 'center'}}>
+      {/* <View style={{width: '100%', alignItems: 'center'}}> */}
       <Image source={logo} style={homeStyles.logo}/>
       <Text style={homeStyles.welcome}>Welcome {firstName}👋</Text>
       <View style={homeStyles.barContainer}>
@@ -210,7 +211,7 @@ const opacityStyle = { opacity: opacityAnimation };
         <Text style={homeStyles.buyGiftText}>Buy a Gift</Text>
       </Pressable>
       </Animated.View>
-
+      {/* </View> */}
     </SafeAreaView>
   );
 };
@@ -224,7 +225,7 @@ const homeStyles = StyleSheet.create({
     width: 109,
     height: 34,
     position: 'absolute',
-    left: 40,
+    left: '10.25%',
     top: 46,
   },
   welcome: {
@@ -234,16 +235,16 @@ const homeStyles = StyleSheet.create({
     color: '#10451D',
     position: 'absolute',
     top: 108,
-    left: 20,
+    left: '5%',
   },
   barContainer: {
     width: 352,
     height: 220,
-    top: 156,
-    left: 19,
+    top: 105,
+    // left: 19,
     borderRadius: 5,
     backgroundColor: 'white',
-    position: 'absolute',
+    // position: 'absolute',
     shadowOpacity: 0.25,
     shadowRadius: 3.43,
     shadowOffset: { width: 0, height: 1.72 }
@@ -289,7 +290,7 @@ const homeStyles = StyleSheet.create({
   rewardExamples: {
     // height: 254,
     width: 353,
-    left: 19,
+    left: '4.85%',
     top: 193,
     position: 'absolute',
   },
@@ -329,8 +330,6 @@ const homeStyles = StyleSheet.create({
     borderRadius: 24.25714111328125,
     borderColor: '#10451D',
     borderWidth: 0.81,
-    // left: 58,
-    // position: 'absolute'
   },
   tab2: {
     height: 67.91999816894531,
@@ -344,8 +343,8 @@ const homeStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 30.9,
-    position: 'absolute',
-    top: 410,
+    // position: 'absolute',
+    top: '39%',
     alignSelf: 'center',
   },
   tabIcon: {
@@ -362,12 +361,12 @@ const homeStyles = StyleSheet.create({
   cardContainer: {
     height: 190,
     width: 352,
-    left: 20,
-    top: 509,
+    // left: 20,
+    top: '42%',
+    // position: 'absolute',
     borderRadius: 10,
     backgroundColor: 'white',
     shadowOpacity: 0.25,
-    position: 'absolute',
     shadowRadius: 2,
     shadowOffset: { width: 2, height: 2 },
   },

@@ -70,7 +70,7 @@ const Invite = ( {navigation} ) => {
 
 const inviteStyles = StyleSheet.create({
     backArrow: {
-        left: 29,
+        left: '8%',
         top: 97,
         position: 'absolute',
         height: 24
@@ -93,7 +93,7 @@ const inviteStyles = StyleSheet.create({
         width: 109,
         height: 34,
         position: 'absolute',
-        left: 40,
+        left: '10.25%',
         top: 46,
     },
     world: {

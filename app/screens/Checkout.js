@@ -18,7 +18,7 @@ export default function App( {route, navigation} ) {
   const gift = route.params;
     const [isGift, setIsGift] = useState(gift);
   return (
-      <SafeAreaView>
+      <SafeAreaView style={{width: '100%', alignItems: 'center'}}>
     <Text style={styles.title}>Buy a Gift Card</Text>
     <AntDesign style={styles.backArrow} name="arrowleft" size={24} color={'black'}
               onPress={() =>
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   backArrow: {
-    left: 29,
+    left: '8%',
     top: 80,
     position: 'absolute',
     height: 24

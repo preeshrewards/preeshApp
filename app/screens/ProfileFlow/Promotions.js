@@ -56,7 +56,7 @@ const Promotions = ( {navigation} ) => {
       onPress={() =>
         setPromoPop(null)
       }
-      style={{top: 125, left: 330, position: 'absolute'}} color={'#10451D'} name="x" size={30}/> : null}
+      style={{top: '25%', left: '84.5%', position: 'absolute'}} color={'#10451D'} name="x" size={30}/> : null}
         <Text style={promoStyles.title}>Promotions</Text>
         <AntDesign style={promoStyles.backArrow} name="arrowleft" size={24} color={'black'}
                 onPress={() =>
@@ -95,7 +95,7 @@ const Promotions = ( {navigation} ) => {
 
 const promoStyles = StyleSheet.create({
     backArrow: {
-        left: 29,
+        left: '8%',
         top: 80,
         position: 'absolute',
         height: 24

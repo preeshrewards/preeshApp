@@ -54,7 +54,7 @@ const BuyGift = ( {navigation} ) => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{alignItems: 'center'}}>
       <Text style={buyGiftStyle.title}>Buy a Gift<Text> </Text>
       <MaterialCommunityIcons name="gift" size={24} color={'black'}/>
       </Text>
@@ -139,15 +139,8 @@ const buyGiftStyle = StyleSheet.create({
     elevation: 5,
     borderRadius: 5
   },
-  logo: {
-    width: 109,
-    height: 34,
-    position: 'absolute',
-    left: 40,
-    top: 46,
-  },
   backArrow: {
-    left: 29,
+    left: '8%',
     top: 80,
     position: 'absolute',
     height: 24

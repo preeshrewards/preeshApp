@@ -62,11 +62,11 @@ const howItWorksStyles = StyleSheet.create({
       width: 109,
       height: 34,
       position: 'absolute',
-      left: 40,
+      left: '10.25%',
       top: 46,
     },
     backArrow: {
-        left: 29,
+        left: '8%',
         top: 112,
         position: 'absolute',
         height: 24
